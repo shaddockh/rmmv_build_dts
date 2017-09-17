@@ -11,60 +11,60 @@
 //
 // The static class that manages the database and game objects.
 declare class DataManager {
-	loadDatabase();
-	loadDataFile(name, src);
-	isDatabaseLoaded();
-	loadMapData(mapId);
-	makeEmptyMap();
-	isMapLoaded();
-	onLoad(object);
-	extractMetadata(data);
-	checkError();
-	isBattleTest();
-	isEventTest();
-	isSkill(item);
-	isItem(item);
-	isWeapon(item);
-	isArmor(item);
-	createGameObjects();
-	setupNewGame();
-	setupBattleTest();
-	setupEventTest();
-	loadGlobalInfo();
-	saveGlobalInfo(info);
-	isThisGameFile(savefileId);
-	isAnySavefileExists();
-	latestSavefileId();
-	loadAllSavefileImages();
-	loadSavefileImages(info);
-	maxSavefiles();
-	saveGame(savefileId);
-	loadGame(savefileId);
-	loadSavefileInfo(savefileId);
-	lastAccessedSavefileId();
-	saveGameWithoutRescue(savefileId);
-	loadGameWithoutRescue(savefileId);
-	selectSavefileForNewGame();
-	makeSavefileInfo();
-	makeSaveContents();
-	extractSaveContents(contents);
+	static loadDatabase();
+	static loadDataFile(name, src);
+	static isDatabaseLoaded();
+	static loadMapData(mapId);
+	static makeEmptyMap();
+	static isMapLoaded();
+	static onLoad(object);
+	static extractMetadata(data);
+	static checkError();
+	static isBattleTest();
+	static isEventTest();
+	static isSkill(item);
+	static isItem(item);
+	static isWeapon(item);
+	static isArmor(item);
+	static createGameObjects();
+	static setupNewGame();
+	static setupBattleTest();
+	static setupEventTest();
+	static loadGlobalInfo();
+	static saveGlobalInfo(info);
+	static isThisGameFile(savefileId);
+	static isAnySavefileExists();
+	static latestSavefileId();
+	static loadAllSavefileImages();
+	static loadSavefileImages(info);
+	static maxSavefiles();
+	static saveGame(savefileId);
+	static loadGame(savefileId);
+	static loadSavefileInfo(savefileId);
+	static lastAccessedSavefileId();
+	static saveGameWithoutRescue(savefileId);
+	static loadGameWithoutRescue(savefileId);
+	static selectSavefileForNewGame();
+	static makeSavefileInfo();
+	static makeSaveContents();
+	static extractSaveContents(contents);
 }
 
 declare class xhr {
-	onload();
+	static onload();
 }
 
 declare class ConfigManager {
-	bgmVolume;
-	bgsVolume;
-	meVolume;
-	seVolume;
-	load();
-	save();
-	makeData();
-	applyData(config);
-	readFlag(config, name);
-	readVolume(config, name);
+	static bgmVolume;
+	static bgsVolume;
+	static meVolume;
+	static seVolume;
+	static load();
+	static save();
+	static makeData();
+	static applyData(config);
+	static readFlag(config, name);
+	static readVolume(config, name);
 }
 
 //-----------------------------------------------------------------------------
@@ -72,30 +72,30 @@ declare class ConfigManager {
 //
 // The static class that manages storage for saving game data.
 declare class StorageManager {
-	save(savefileId, json);
-	load(savefileId);
-	exists(savefileId);
-	remove(savefileId);
-	backup(savefileId);
-	backupExists(savefileId);
-	cleanBackup(savefileId);
-	restoreBackup(savefileId);
-	isLocalMode();
-	saveToLocalFile(savefileId, json);
-	loadFromLocalFile(savefileId);
-	loadFromLocalBackupFile(savefileId);
-	localFileBackupExists(savefileId);
-	localFileExists(savefileId);
-	removeLocalFile(savefileId);
-	saveToWebStorage(savefileId, json);
-	loadFromWebStorage(savefileId);
-	loadFromWebStorageBackup(savefileId);
-	webStorageBackupExists(savefileId);
-	webStorageExists(savefileId);
-	removeWebStorage(savefileId);
-	localFileDirectoryPath();
-	localFilePath(savefileId);
-	webStorageKey(savefileId);
+	static save(savefileId, json);
+	static load(savefileId);
+	static exists(savefileId);
+	static remove(savefileId);
+	static backup(savefileId);
+	static backupExists(savefileId);
+	static cleanBackup(savefileId);
+	static restoreBackup(savefileId);
+	static isLocalMode();
+	static saveToLocalFile(savefileId, json);
+	static loadFromLocalFile(savefileId);
+	static loadFromLocalBackupFile(savefileId);
+	static localFileBackupExists(savefileId);
+	static localFileExists(savefileId);
+	static removeLocalFile(savefileId);
+	static saveToWebStorage(savefileId, json);
+	static loadFromWebStorage(savefileId);
+	static loadFromWebStorageBackup(savefileId);
+	static webStorageBackupExists(savefileId);
+	static webStorageExists(savefileId);
+	static removeWebStorage(savefileId);
+	static localFileDirectoryPath();
+	static localFilePath(savefileId);
+	static webStorageKey(savefileId);
 }
 
 //-----------------------------------------------------------------------------
@@ -105,207 +105,207 @@ declare class StorageManager {
 declare class ImageManager {
 
 //undefined
-	_generateCacheKey(path, hue?);
+	static _generateCacheKey(path, hue?);
 
 //undefined
-	loadAnimation(filename, hue?);
+	static loadAnimation(filename, hue?);
 
 //undefined
-	loadBattleback1(filename, hue?);
+	static loadBattleback1(filename, hue?);
 
 //undefined
-	loadBattleback2(filename, hue?);
+	static loadBattleback2(filename, hue?);
 
 //undefined
-	loadEnemy(filename, hue?);
+	static loadEnemy(filename, hue?);
 
 //undefined
-	loadCharacter(filename, hue?);
+	static loadCharacter(filename, hue?);
 
 //undefined
-	loadFace(filename, hue?);
+	static loadFace(filename, hue?);
 
 //undefined
-	loadParallax(filename, hue?);
+	static loadParallax(filename, hue?);
 
 //undefined
-	loadPicture(filename, hue?);
+	static loadPicture(filename, hue?);
 
 //undefined
-	loadSvActor(filename, hue?);
+	static loadSvActor(filename, hue?);
 
 //undefined
-	loadSvEnemy(filename, hue?);
+	static loadSvEnemy(filename, hue?);
 
 //undefined
-	loadSystem(filename, hue?);
+	static loadSystem(filename, hue?);
 
 //undefined
-	loadTileset(filename, hue?);
+	static loadTileset(filename, hue?);
 
 //undefined
-	loadTitle1(filename, hue?);
+	static loadTitle1(filename, hue?);
 
 //undefined
-	loadTitle2(filename, hue?);
+	static loadTitle2(filename, hue?);
 
 //undefined
-	loadBitmap(folder, filename, hue?, smooth?);
-	loadEmptyBitmap();
+	static loadBitmap(folder, filename, hue?, smooth?);
+	static loadEmptyBitmap();
 
 //undefined
-	loadNormalBitmap(path, hue?);
-	clear();
-	isReady();
-	isObjectCharacter(filename);
-	isBigCharacter(filename);
-	isZeroParallax(filename);
+	static loadNormalBitmap(path, hue?);
+	static clear();
+	static isReady();
+	static isObjectCharacter(filename);
+	static isBigCharacter(filename);
+	static isZeroParallax(filename);
 
 //undefined
-	reserveAnimation(filename, hue?, reservationId?);
+	static reserveAnimation(filename, hue?, reservationId?);
 
 //undefined
-	reserveBattleback1(filename, hue?, reservationId?);
+	static reserveBattleback1(filename, hue?, reservationId?);
 
 //undefined
-	reserveBattleback2(filename, hue?, reservationId?);
+	static reserveBattleback2(filename, hue?, reservationId?);
 
 //undefined
-	reserveEnemy(filename, hue?, reservationId?);
+	static reserveEnemy(filename, hue?, reservationId?);
 
 //undefined
-	reserveCharacter(filename, hue?, reservationId?);
+	static reserveCharacter(filename, hue?, reservationId?);
 
 //undefined
-	reserveFace(filename, hue?, reservationId?);
+	static reserveFace(filename, hue?, reservationId?);
 
 //undefined
-	reserveParallax(filename, hue?, reservationId?);
+	static reserveParallax(filename, hue?, reservationId?);
 
 //undefined
-	reservePicture(filename, hue?, reservationId?);
+	static reservePicture(filename, hue?, reservationId?);
 
 //undefined
-	reserveSvActor(filename, hue?, reservationId?);
+	static reserveSvActor(filename, hue?, reservationId?);
 
 //undefined
-	reserveSvEnemy(filename, hue?, reservationId?);
+	static reserveSvEnemy(filename, hue?, reservationId?);
 
 //undefined
-	reserveSystem(filename, hue?, reservationId?);
+	static reserveSystem(filename, hue?, reservationId?);
 
 //undefined
-	reserveTileset(filename, hue?, reservationId?);
+	static reserveTileset(filename, hue?, reservationId?);
 
 //undefined
-	reserveTitle1(filename, hue?, reservationId?);
+	static reserveTitle1(filename, hue?, reservationId?);
 
 //undefined
-	reserveTitle2(filename, hue?, reservationId?);
+	static reserveTitle2(filename, hue?, reservationId?);
 
 //undefined
-	reserveBitmap(folder, filename, hue?, smooth?, reservationId?);
+	static reserveBitmap(folder, filename, hue?, smooth?, reservationId?);
 
 //undefined
-	reserveNormalBitmap(path, hue?, reservationId?);
-	releaseReservation(reservationId);
-	setDefaultReservationId(reservationId);
+	static reserveNormalBitmap(path, hue?, reservationId?);
+	static releaseReservation(reservationId);
+	static setDefaultReservationId(reservationId);
 
 //undefined
-	requestAnimation(filename, hue?);
+	static requestAnimation(filename, hue?);
 
 //undefined
-	requestBattleback1(filename, hue?);
+	static requestBattleback1(filename, hue?);
 
 //undefined
-	requestBattleback2(filename, hue?);
+	static requestBattleback2(filename, hue?);
 
 //undefined
-	requestEnemy(filename, hue?);
+	static requestEnemy(filename, hue?);
 
 //undefined
-	requestCharacter(filename, hue?);
+	static requestCharacter(filename, hue?);
 
 //undefined
-	requestFace(filename, hue?);
+	static requestFace(filename, hue?);
 
 //undefined
-	requestParallax(filename, hue?);
+	static requestParallax(filename, hue?);
 
 //undefined
-	requestPicture(filename, hue?);
+	static requestPicture(filename, hue?);
 
 //undefined
-	requestSvActor(filename, hue?);
+	static requestSvActor(filename, hue?);
 
 //undefined
-	requestSvEnemy(filename, hue?);
+	static requestSvEnemy(filename, hue?);
 
 //undefined
-	requestSystem(filename, hue?);
+	static requestSystem(filename, hue?);
 
 //undefined
-	requestTileset(filename, hue?);
+	static requestTileset(filename, hue?);
 
 //undefined
-	requestTitle1(filename, hue?);
+	static requestTitle1(filename, hue?);
 
 //undefined
-	requestTitle2(filename, hue?);
+	static requestTitle2(filename, hue?);
 
 //undefined
-	requestBitmap(folder, filename, hue?, smooth?);
+	static requestBitmap(folder, filename, hue?, smooth?);
 
 //undefined
-	requestNormalBitmap(path, hue?);
-	update();
-	clearRequest();
+	static requestNormalBitmap(path, hue?);
+	static update();
+	static clearRequest();
 }
 
 declare class AudioManager {
-	masterVolume;
-	bgmVolume;
-	bgsVolume;
-	meVolume;
-	seVolume;
-	playBgm(bgm, pos);
-	playEncryptedBgm(bgm, pos);
-	createDecryptBuffer(url, bgm, pos);
-	replayBgm(bgm);
-	isCurrentBgm(bgm);
-	updateBgmParameters(bgm);
-	updateCurrentBgm(bgm, pos);
-	stopBgm();
-	fadeOutBgm(duration);
-	fadeInBgm(duration);
-	playBgs(bgs, pos);
-	replayBgs(bgs);
-	isCurrentBgs(bgs);
-	updateBgsParameters(bgs);
-	updateCurrentBgs(bgs, pos);
-	stopBgs();
-	fadeOutBgs(duration);
-	fadeInBgs(duration);
-	playMe(me);
-	updateMeParameters(me);
-	fadeOutMe(duration);
-	stopMe();
-	playSe(se);
-	updateSeParameters(buffer, se);
-	stopSe();
-	playStaticSe(se);
-	loadStaticSe(se);
-	isStaticSe(se);
-	stopAll();
-	saveBgm();
-	saveBgs();
-	makeEmptyAudioObject();
-	createBuffer(folder, name);
-	updateBufferParameters(buffer, configVolume, audio);
-	audioFileExt();
-	shouldUseHtml5Audio();
-	checkErrors();
-	checkWebAudioError(webAudio);
+	static masterVolume;
+	static bgmVolume;
+	static bgsVolume;
+	static meVolume;
+	static seVolume;
+	static playBgm(bgm, pos);
+	static playEncryptedBgm(bgm, pos);
+	static createDecryptBuffer(url, bgm, pos);
+	static replayBgm(bgm);
+	static isCurrentBgm(bgm);
+	static updateBgmParameters(bgm);
+	static updateCurrentBgm(bgm, pos);
+	static stopBgm();
+	static fadeOutBgm(duration);
+	static fadeInBgm(duration);
+	static playBgs(bgs, pos);
+	static replayBgs(bgs);
+	static isCurrentBgs(bgs);
+	static updateBgsParameters(bgs);
+	static updateCurrentBgs(bgs, pos);
+	static stopBgs();
+	static fadeOutBgs(duration);
+	static fadeInBgs(duration);
+	static playMe(me);
+	static updateMeParameters(me);
+	static fadeOutMe(duration);
+	static stopMe();
+	static playSe(se);
+	static updateSeParameters(buffer, se);
+	static stopSe();
+	static playStaticSe(se);
+	static loadStaticSe(se);
+	static isStaticSe(se);
+	static stopAll();
+	static saveBgm();
+	static saveBgs();
+	static makeEmptyAudioObject();
+	static createBuffer(folder, name);
+	static updateBufferParameters(buffer, configVolume, audio);
+	static audioFileExt();
+	static shouldUseHtml5Audio();
+	static checkErrors();
+	static checkWebAudioError(webAudio);
 }
 
 //-----------------------------------------------------------------------------
@@ -313,33 +313,33 @@ declare class AudioManager {
 //
 // The static class that plays sound effects defined in the database.
 declare class SoundManager {
-	preloadImportantSounds();
-	loadSystemSound(n);
-	playSystemSound(n);
-	playCursor();
-	playOk();
-	playCancel();
-	playBuzzer();
-	playEquip();
-	playSave();
-	playLoad();
-	playBattleStart();
-	playEscape();
-	playEnemyAttack();
-	playEnemyDamage();
-	playEnemyCollapse();
-	playBossCollapse1();
-	playBossCollapse2();
-	playActorDamage();
-	playActorCollapse();
-	playRecovery();
-	playMiss();
-	playEvasion();
-	playMagicEvasion();
-	playReflection();
-	playShop();
-	playUseItem();
-	playUseSkill();
+	static preloadImportantSounds();
+	static loadSystemSound(n);
+	static playSystemSound(n);
+	static playCursor();
+	static playOk();
+	static playCancel();
+	static playBuzzer();
+	static playEquip();
+	static playSave();
+	static playLoad();
+	static playBattleStart();
+	static playEscape();
+	static playEnemyAttack();
+	static playEnemyDamage();
+	static playEnemyCollapse();
+	static playBossCollapse1();
+	static playBossCollapse2();
+	static playActorDamage();
+	static playActorCollapse();
+	static playRecovery();
+	static playMiss();
+	static playEvasion();
+	static playMagicEvasion();
+	static playReflection();
+	static playShop();
+	static playUseItem();
+	static playUseSkill();
 }
 
 //-----------------------------------------------------------------------------
@@ -347,12 +347,12 @@ declare class SoundManager {
 //
 // The static class that handles terms and messages.
 declare class TextManager {
-	basic(basicId);
-	param(paramId);
-	command(commandId);
-	message(messageId);
-	getter(method, param);
-	currencyUnit;
+	static basic(basicId);
+	static param(paramId);
+	static command(commandId);
+	static message(messageId);
+	static getter(method, param);
+	static currencyUnit;
 }
 
 //-----------------------------------------------------------------------------
@@ -365,52 +365,52 @@ declare class SceneManager {
 * Gets the current time in ms without on iOS Safari.
 * @private
 */
-	_getTimeInMsWithoutMobileSafari();
-	run(sceneClass);
-	initialize();
-	initGraphics();
-	preferableRendererType();
-	shouldUseCanvasRenderer();
-	checkWebGL();
-	checkFileAccess();
-	initAudio();
-	initInput();
-	initNwjs();
-	checkPluginErrors();
-	setupErrorHandlers();
-	requestUpdate();
-	update();
-	terminate();
-	onError(e);
-	onKeyDown(event);
-	catchException(e);
-	tickStart();
-	tickEnd();
-	updateInputData();
-	updateMain();
-	updateManagers();
-	changeScene();
-	updateScene();
-	renderScene();
-	onSceneCreate();
-	onSceneStart();
-	onSceneLoading();
-	isSceneChanging();
-	isCurrentSceneBusy();
-	isCurrentSceneStarted();
-	isNextScene(sceneClass);
-	isPreviousScene(sceneClass);
-	goto(sceneClass);
-	push(sceneClass);
-	pop();
-	exit();
-	clearStack();
-	stop();
-	prepareNextScene();
-	snap();
-	snapForBackground();
-	backgroundBitmap();
-	resume();
+	static _getTimeInMsWithoutMobileSafari();
+	static run(sceneClass);
+	static initialize();
+	static initGraphics();
+	static preferableRendererType();
+	static shouldUseCanvasRenderer();
+	static checkWebGL();
+	static checkFileAccess();
+	static initAudio();
+	static initInput();
+	static initNwjs();
+	static checkPluginErrors();
+	static setupErrorHandlers();
+	static requestUpdate();
+	static update();
+	static terminate();
+	static onError(e);
+	static onKeyDown(event);
+	static catchException(e);
+	static tickStart();
+	static tickEnd();
+	static updateInputData();
+	static updateMain();
+	static updateManagers();
+	static changeScene();
+	static updateScene();
+	static renderScene();
+	static onSceneCreate();
+	static onSceneStart();
+	static onSceneLoading();
+	static isSceneChanging();
+	static isCurrentSceneBusy();
+	static isCurrentSceneStarted();
+	static isNextScene(sceneClass);
+	static isPreviousScene(sceneClass);
+	static goto(sceneClass);
+	static push(sceneClass);
+	static pop();
+	static exit();
+	static clearStack();
+	static stop();
+	static prepareNextScene();
+	static snap();
+	static snapForBackground();
+	static backgroundBitmap();
+	static resume();
 }
 
 //-----------------------------------------------------------------------------
@@ -418,89 +418,89 @@ declare class SceneManager {
 //
 // The static class that manages battle progress.
 declare class BattleManager {
-	setup(troopId, canEscape, canLose);
-	initMembers();
-	isBattleTest();
-	setBattleTest(battleTest);
-	setEventCallback(callback);
-	setLogWindow(logWindow);
-	setStatusWindow(statusWindow);
-	setSpriteset(spriteset);
-	onEncounter();
-	ratePreemptive();
-	rateSurprise();
-	saveBgmAndBgs();
-	playBattleBgm();
-	playVictoryMe();
-	playDefeatMe();
-	replayBgmAndBgs();
-	makeEscapeRatio();
-	update();
-	updateEvent();
-	updateEventMain();
-	isBusy();
-	isInputting();
-	isInTurn();
-	isTurnEnd();
-	isAborting();
-	isBattleEnd();
-	canEscape();
-	canLose();
-	isEscaped();
-	actor();
-	clearActor();
-	changeActor(newActorIndex, lastActorActionState);
-	startBattle();
-	displayStartMessages();
-	startInput();
-	inputtingAction();
-	selectNextCommand();
-	selectPreviousCommand();
-	refreshStatus();
-	startTurn();
-	updateTurn();
-	processTurn();
-	endTurn();
-	isForcedTurn();
-	updateTurnEnd();
-	getNextSubject();
-	allBattleMembers();
-	makeActionOrders();
-	startAction();
-	updateAction();
-	endAction();
-	invokeAction(subject, target);
-	invokeNormalAction(subject, target);
-	invokeCounterAttack(subject, target);
-	invokeMagicReflection(subject, target);
-	applySubstitute(target);
-	checkSubstitute(target);
-	isActionForced();
-	forceAction(battler);
-	processForcedAction();
-	abort();
-	checkBattleEnd();
-	checkAbort();
-	checkAbort2();
-	processVictory();
-	processEscape();
-	processAbort();
-	processDefeat();
-	endBattle(result);
-	updateBattleEnd();
-	makeRewards();
-	displayVictoryMessage();
-	displayDefeatMessage();
-	displayEscapeSuccessMessage();
-	displayEscapeFailureMessage();
-	displayRewards();
-	displayExp();
-	displayGold();
-	displayDropItems();
-	gainRewards();
-	gainExp();
-	gainGold();
-	gainDropItems();
+	static setup(troopId, canEscape, canLose);
+	static initMembers();
+	static isBattleTest();
+	static setBattleTest(battleTest);
+	static setEventCallback(callback);
+	static setLogWindow(logWindow);
+	static setStatusWindow(statusWindow);
+	static setSpriteset(spriteset);
+	static onEncounter();
+	static ratePreemptive();
+	static rateSurprise();
+	static saveBgmAndBgs();
+	static playBattleBgm();
+	static playVictoryMe();
+	static playDefeatMe();
+	static replayBgmAndBgs();
+	static makeEscapeRatio();
+	static update();
+	static updateEvent();
+	static updateEventMain();
+	static isBusy();
+	static isInputting();
+	static isInTurn();
+	static isTurnEnd();
+	static isAborting();
+	static isBattleEnd();
+	static canEscape();
+	static canLose();
+	static isEscaped();
+	static actor();
+	static clearActor();
+	static changeActor(newActorIndex, lastActorActionState);
+	static startBattle();
+	static displayStartMessages();
+	static startInput();
+	static inputtingAction();
+	static selectNextCommand();
+	static selectPreviousCommand();
+	static refreshStatus();
+	static startTurn();
+	static updateTurn();
+	static processTurn();
+	static endTurn();
+	static isForcedTurn();
+	static updateTurnEnd();
+	static getNextSubject();
+	static allBattleMembers();
+	static makeActionOrders();
+	static startAction();
+	static updateAction();
+	static endAction();
+	static invokeAction(subject, target);
+	static invokeNormalAction(subject, target);
+	static invokeCounterAttack(subject, target);
+	static invokeMagicReflection(subject, target);
+	static applySubstitute(target);
+	static checkSubstitute(target);
+	static isActionForced();
+	static forceAction(battler);
+	static processForcedAction();
+	static abort();
+	static checkBattleEnd();
+	static checkAbort();
+	static checkAbort2();
+	static processVictory();
+	static processEscape();
+	static processAbort();
+	static processDefeat();
+	static endBattle(result);
+	static updateBattleEnd();
+	static makeRewards();
+	static displayVictoryMessage();
+	static displayDefeatMessage();
+	static displayEscapeSuccessMessage();
+	static displayEscapeFailureMessage();
+	static displayRewards();
+	static displayExp();
+	static displayGold();
+	static displayDropItems();
+	static gainRewards();
+	static gainExp();
+	static gainGold();
+	static gainDropItems();
 }
 
 //-----------------------------------------------------------------------------
@@ -508,11 +508,11 @@ declare class BattleManager {
 //
 // The static class that manages the plugins.
 declare class PluginManager {
-	setup(plugins);
-	checkErrors();
-	parameters(name);
-	setParameters(name, parameters);
-	loadScript(name);
-	onError(e);
+	static setup(plugins);
+	static checkErrors();
+	static parameters(name);
+	static setParameters(name, parameters);
+	static loadScript(name);
+	static onError(e);
 }
 

@@ -18,7 +18,7 @@ class NamespaceDeclaration {
             output.push(`declare ${this.classOrInterface} ${this.name} {`);
         }
         this.members.forEach(member => {
-            if (member.isStatic) {
+            if (this.classOrInterface == "interface" && member.isStatic) {
                 member.isStatic = false;
             }
             output.push(member.buildOutput("\t"));

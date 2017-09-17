@@ -114,7 +114,7 @@ declare class Utils {
 * @param {String} name The option name
 * @return {Boolean} True if the option is in the query string
 */
-	isOptionValid(name);
+	static isOptionValid(name);
 
 /**
 * Checks whether the platform is NW.js.
@@ -123,7 +123,7 @@ declare class Utils {
 * @method isNwjs
 * @return {Boolean} True if the platform is NW.js
 */
-	isNwjs();
+	static isNwjs();
 
 /**
 * Checks whether the platform is a mobile device.
@@ -132,7 +132,7 @@ declare class Utils {
 * @method isMobileDevice
 * @return {Boolean} True if the platform is a mobile device
 */
-	isMobileDevice();
+	static isMobileDevice();
 
 /**
 * Checks whether the browser is Mobile Safari.
@@ -141,7 +141,7 @@ declare class Utils {
 * @method isMobileSafari
 * @return {Boolean} True if the browser is Mobile Safari
 */
-	isMobileSafari();
+	static isMobileSafari();
 
 /**
 * Checks whether the browser is Android Chrome.
@@ -150,7 +150,7 @@ declare class Utils {
 * @method isAndroidChrome
 * @return {Boolean} True if the browser is Android Chrome
 */
-	isAndroidChrome();
+	static isAndroidChrome();
 
 /**
 * Checks whether the browser can read files in the game folder.
@@ -159,7 +159,7 @@ declare class Utils {
 * @method canReadGameFiles
 * @return {Boolean} True if the browser can read files in the game folder
 */
-	canReadGameFiles();
+	static canReadGameFiles();
 
 /**
 * Makes a CSS color string from RGB values.
@@ -171,8 +171,8 @@ declare class Utils {
 * @param {Number} b The blue value in the range (0, 255)
 * @return {String} CSS color string
 */
-	rgbToCssColor(r, g, b);
-	generateRuntimeId();
+	static rgbToCssColor(r, g, b);
+	static generateRuntimeId();
 
 /**
 * Test this browser support passive event feature
@@ -181,7 +181,7 @@ declare class Utils {
 * @method isSupportPassiveEvent
 * @return {Boolean} this browser support passive event or not
 */
-	isSupportPassiveEvent();
+	static isSupportPassiveEvent();
 }
 
 /**
@@ -352,7 +352,7 @@ declare class Bitmap {
 * @param {String} url The image url of the texture
 * @return Bitmap
 */
-	load(url);
+	static load(url);
 
 /**
 * Takes a snapshot of the game screen and returns a new bitmap object.
@@ -362,7 +362,7 @@ declare class Bitmap {
 * @param {Stage} stage The stage object
 * @return Bitmap
 */
-	snap(stage);
+	static snap(stage);
 
 /**
 * Checks whether the bitmap is ready to render.
@@ -693,7 +693,7 @@ declare class Bitmap {
 * @method checkDirty
 */
 	checkDirty();
-	request(url);
+	static request(url);
 	_requestImage(url);
 	isRequestOnly();
 	isRequestReady();
@@ -717,9 +717,9 @@ declare class Graphics {
 * @param {String} type The type of the renderer.
 *                 'canvas', 'webgl', or 'auto'.
 */
-	initialize(width?, height?, type?);
-	_setupCssFontLoading();
-	canUseCssFontLoading();
+	static initialize(width?, height?, type?);
+	static _setupCssFontLoading();
+	static canUseCssFontLoading();
 
 /**
 * Marks the beginning of each frame for FPSMeter.
@@ -727,7 +727,7 @@ declare class Graphics {
 * @static
 * @method tickStart
 */
-	tickStart();
+	static tickStart();
 
 /**
 * Marks the end of each frame for FPSMeter.
@@ -735,7 +735,7 @@ declare class Graphics {
 * @static
 * @method tickEnd
 */
-	tickEnd();
+	static tickEnd();
 
 /**
 * Renders the stage to the game screen.
@@ -744,7 +744,7 @@ declare class Graphics {
 * @method render
 * @param {Stage} stage The stage object to be rendered
 */
-	render(stage);
+	static render(stage);
 
 /**
 * Checks whether the renderer type is WebGL.
@@ -753,7 +753,7 @@ declare class Graphics {
 * @method isWebGL
 * @return {Boolean} True if the renderer type is WebGL
 */
-	isWebGL();
+	static isWebGL();
 
 /**
 * Checks whether the current browser supports WebGL.
@@ -762,7 +762,7 @@ declare class Graphics {
 * @method hasWebGL
 * @return {Boolean} True if the current browser supports WebGL.
 */
-	hasWebGL();
+	static hasWebGL();
 
 /**
 * Checks whether the canvas blend mode 'difference' is supported.
@@ -771,7 +771,7 @@ declare class Graphics {
 * @method canUseDifferenceBlend
 * @return {Boolean} True if the canvas blend mode 'difference' is supported
 */
-	canUseDifferenceBlend();
+	static canUseDifferenceBlend();
 
 /**
 * Checks whether the canvas blend mode 'saturation' is supported.
@@ -780,7 +780,7 @@ declare class Graphics {
 * @method canUseSaturationBlend
 * @return {Boolean} True if the canvas blend mode 'saturation' is supported
 */
-	canUseSaturationBlend();
+	static canUseSaturationBlend();
 
 /**
 * Sets the source of the "Now Loading" image.
@@ -788,7 +788,7 @@ declare class Graphics {
 * @static
 * @method setLoadingImage
 */
-	setLoadingImage(src);
+	static setLoadingImage(src);
 
 /**
 * Initializes the counter for displaying the "Now Loading" image.
@@ -796,7 +796,7 @@ declare class Graphics {
 * @static
 * @method startLoading
 */
-	startLoading();
+	static startLoading();
 
 /**
 * Increments the loading counter and displays the "Now Loading" image if necessary.
@@ -804,7 +804,7 @@ declare class Graphics {
 * @static
 * @method updateLoading
 */
-	updateLoading();
+	static updateLoading();
 
 /**
 * Erases the "Now Loading" image.
@@ -812,7 +812,7 @@ declare class Graphics {
 * @static
 * @method endLoading
 */
-	endLoading();
+	static endLoading();
 
 /**
 * Displays the loading error text to the screen.
@@ -821,7 +821,7 @@ declare class Graphics {
 * @method printLoadingError
 * @param {String} url The url of the resource failed to load
 */
-	printLoadingError(url);
+	static printLoadingError(url);
 
 /**
 * Erases the loading error text.
@@ -829,7 +829,7 @@ declare class Graphics {
 * @static
 * @method eraseLoadingError
 */
-	eraseLoadingError();
+	static eraseLoadingError();
 
 /**
 * Displays the error text to the screen.
@@ -839,7 +839,7 @@ declare class Graphics {
 * @param {String} name The name of the error
 * @param {String} message The message of the error
 */
-	printError(name, message);
+	static printError(name, message);
 
 /**
 * Shows the FPSMeter element.
@@ -847,7 +847,7 @@ declare class Graphics {
 * @static
 * @method showFps
 */
-	showFps();
+	static showFps();
 
 /**
 * Hides the FPSMeter element.
@@ -855,7 +855,7 @@ declare class Graphics {
 * @static
 * @method hideFps
 */
-	hideFps();
+	static hideFps();
 
 /**
 * Loads a font file.
@@ -865,7 +865,7 @@ declare class Graphics {
 * @param {String} name The face name of the font
 * @param {String} url The url of the font file
 */
-	loadFont(name, url);
+	static loadFont(name, url);
 
 /**
 * Checks whether the font file is loaded.
@@ -875,7 +875,7 @@ declare class Graphics {
 * @param {String} name The face name of the font
 * @return {Boolean} True if the font file is loaded
 */
-	isFontLoaded(name);
+	static isFontLoaded(name);
 
 /**
 * Starts playback of a video.
@@ -884,7 +884,7 @@ declare class Graphics {
 * @method playVideo
 * @param {String} src
 */
-	playVideo(src);
+	static playVideo(src);
 
 /**
 * @static
@@ -892,7 +892,7 @@ declare class Graphics {
 * @param {String} src
 * @private
 */
-	_playVideo(src);
+	static _playVideo(src);
 
 /**
 * Checks whether the video is playing.
@@ -901,7 +901,7 @@ declare class Graphics {
 * @method isVideoPlaying
 * @return {Boolean} True if the video is playing
 */
-	isVideoPlaying();
+	static isVideoPlaying();
 
 /**
 * Checks whether the browser can play the specified video type.
@@ -911,7 +911,7 @@ declare class Graphics {
 * @param {String} type The video type to test support for
 * @return {Boolean} True if the browser can play the specified video type
 */
-	canPlayVideoType(type);
+	static canPlayVideoType(type);
 
 /**
 * Sets volume of a video.
@@ -920,7 +920,7 @@ declare class Graphics {
 * @method setVideoVolume
 * @param {Number} value
 */
-	setVideoVolume(value);
+	static setVideoVolume(value);
 
 /**
 * Converts an x coordinate on the page to the corresponding
@@ -931,7 +931,7 @@ declare class Graphics {
 * @param {Number} x The x coordinate on the page to be converted
 * @return {Number} The x coordinate on the canvas area
 */
-	pageToCanvasX(x);
+	static pageToCanvasX(x);
 
 /**
 * Converts a y coordinate on the page to the corresponding
@@ -942,7 +942,7 @@ declare class Graphics {
 * @param {Number} y The y coordinate on the page to be converted
 * @return {Number} The y coordinate on the canvas area
 */
-	pageToCanvasY(y);
+	static pageToCanvasY(y);
 
 /**
 * Checks whether the specified point is inside the game canvas area.
@@ -953,12 +953,12 @@ declare class Graphics {
 * @param {Number} y The y coordinate on the canvas area
 * @return {Boolean} True if the specified point is inside the game canvas area
 */
-	isInsideCanvas(x, y);
+	static isInsideCanvas(x, y);
 
 /**
 * Calls pixi.js garbage collector
 */
-	callGC();
+	static callGC();
 
 /**
 * The width of the game screen.
@@ -967,7 +967,7 @@ declare class Graphics {
 * @property width
 * @type Number
 */
-	width;
+	static width;
 
 /**
 * The height of the game screen.
@@ -976,7 +976,7 @@ declare class Graphics {
 * @property height
 * @type Number
 */
-	height;
+	static height;
 
 /**
 * The width of the window display area.
@@ -985,7 +985,7 @@ declare class Graphics {
 * @property boxWidth
 * @type Number
 */
-	boxWidth;
+	static boxWidth;
 
 /**
 * The height of the window display area.
@@ -994,7 +994,7 @@ declare class Graphics {
 * @property boxHeight
 * @type Number
 */
-	boxHeight;
+	static boxHeight;
 
 /**
 * The zoom scale of the game screen.
@@ -1003,28 +1003,28 @@ declare class Graphics {
 * @property scale
 * @type Number
 */
-	scale;
+	static scale;
 
 /**
 * @static
 * @method _createAllElements
 * @private
 */
-	_createAllElements();
+	static _createAllElements();
 
 /**
 * @static
 * @method _updateAllElements
 * @private
 */
-	_updateAllElements();
+	static _updateAllElements();
 
 /**
 * @static
 * @method _updateRealScale
 * @private
 */
-	_updateRealScale();
+	static _updateRealScale();
 
 /**
 * @static
@@ -1034,133 +1034,133 @@ declare class Graphics {
 * @return {String}
 * @private
 */
-	_makeErrorHtml(name, message);
+	static _makeErrorHtml(name, message);
 
 /**
 * @static
 * @method _defaultStretchMode
 * @private
 */
-	_defaultStretchMode();
+	static _defaultStretchMode();
 
 /**
 * @static
 * @method _testCanvasBlendModes
 * @private
 */
-	_testCanvasBlendModes();
+	static _testCanvasBlendModes();
 
 /**
 * @static
 * @method _modifyExistingElements
 * @private
 */
-	_modifyExistingElements();
+	static _modifyExistingElements();
 
 /**
 * @static
 * @method _createErrorPrinter
 * @private
 */
-	_createErrorPrinter();
+	static _createErrorPrinter();
 
 /**
 * @static
 * @method _updateErrorPrinter
 * @private
 */
-	_updateErrorPrinter();
+	static _updateErrorPrinter();
 
 /**
 * @static
 * @method _createCanvas
 * @private
 */
-	_createCanvas();
+	static _createCanvas();
 
 /**
 * @static
 * @method _updateCanvas
 * @private
 */
-	_updateCanvas();
+	static _updateCanvas();
 
 /**
 * @static
 * @method _createVideo
 * @private
 */
-	_createVideo();
+	static _createVideo();
 
 /**
 * @static
 * @method _updateVideo
 * @private
 */
-	_updateVideo();
+	static _updateVideo();
 
 /**
 * @static
 * @method _createUpperCanvas
 * @private
 */
-	_createUpperCanvas();
+	static _createUpperCanvas();
 
 /**
 * @static
 * @method _updateUpperCanvas
 * @private
 */
-	_updateUpperCanvas();
+	static _updateUpperCanvas();
 
 /**
 * @static
 * @method _clearUpperCanvas
 * @private
 */
-	_clearUpperCanvas();
+	static _clearUpperCanvas();
 
 /**
 * @static
 * @method _paintUpperCanvas
 * @private
 */
-	_paintUpperCanvas();
+	static _paintUpperCanvas();
 
 /**
 * @static
 * @method _createRenderer
 * @private
 */
-	_createRenderer();
+	static _createRenderer();
 
 /**
 * @static
 * @method _updateRenderer
 * @private
 */
-	_updateRenderer();
+	static _updateRenderer();
 
 /**
 * @static
 * @method _createFPSMeter
 * @private
 */
-	_createFPSMeter();
+	static _createFPSMeter();
 
 /**
 * @static
 * @method _createModeBox
 * @private
 */
-	_createModeBox();
+	static _createModeBox();
 
 /**
 * @static
 * @method _createGameFontLoader
 * @private
 */
-	_createGameFontLoader();
+	static _createGameFontLoader();
 
 /**
 * @static
@@ -1168,7 +1168,7 @@ declare class Graphics {
 * @param {String} name
 * @private
 */
-	_createFontLoader(name);
+	static _createFontLoader(name);
 
 /**
 * @static
@@ -1176,49 +1176,49 @@ declare class Graphics {
 * @param {HTMLElement} element
 * @private
 */
-	_centerElement(element);
+	static _centerElement(element);
 
 /**
 * @static
 * @method _disableTextSelection
 * @private
 */
-	_disableTextSelection();
+	static _disableTextSelection();
 
 /**
 * @static
 * @method _disableContextMenu
 * @private
 */
-	_disableContextMenu();
+	static _disableContextMenu();
 
 /**
 * @static
 * @method _applyCanvasFilter
 * @private
 */
-	_applyCanvasFilter();
+	static _applyCanvasFilter();
 
 /**
 * @static
 * @method _onVideoLoad
 * @private
 */
-	_onVideoLoad();
+	static _onVideoLoad();
 
 /**
 * @static
 * @method _onVideoError
 * @private
 */
-	_onVideoError();
+	static _onVideoError();
 
 /**
 * @static
 * @method _onVideoEnd
 * @private
 */
-	_onVideoEnd();
+	static _onVideoEnd();
 
 /**
 * @static
@@ -1226,7 +1226,7 @@ declare class Graphics {
 * @param {Boolean} videoVisible
 * @private
 */
-	_updateVisibility(videoVisible);
+	static _updateVisibility(videoVisible);
 
 /**
 * @static
@@ -1234,21 +1234,21 @@ declare class Graphics {
 * @return {Boolean}
 * @private
 */
-	_isVideoVisible();
+	static _isVideoVisible();
 
 /**
 * @static
 * @method _setupEventHandlers
 * @private
 */
-	_setupEventHandlers();
+	static _setupEventHandlers();
 
 /**
 * @static
 * @method _onWindowResize
 * @private
 */
-	_onWindowResize();
+	static _onWindowResize();
 
 /**
 * @static
@@ -1256,7 +1256,7 @@ declare class Graphics {
 * @param {KeyboardEvent} event
 * @private
 */
-	_onKeyDown(event);
+	static _onKeyDown(event);
 
 /**
 * @static
@@ -1264,14 +1264,14 @@ declare class Graphics {
 * @param {TouchEvent} event
 * @private
 */
-	_onTouchEnd(event);
+	static _onTouchEnd(event);
 
 /**
 * @static
 * @method _switchFPSMeter
 * @private
 */
-	_switchFPSMeter();
+	static _switchFPSMeter();
 
 /**
 * @static
@@ -1279,14 +1279,14 @@ declare class Graphics {
 * @return {Boolean}
 * @private
 */
-	_switchStretchMode();
+	static _switchStretchMode();
 
 /**
 * @static
 * @method _switchFullScreen
 * @private
 */
-	_switchFullScreen();
+	static _switchFullScreen();
 
 /**
 * @static
@@ -1294,25 +1294,25 @@ declare class Graphics {
 * @return {Boolean}
 * @private
 */
-	_isFullScreen();
+	static _isFullScreen();
 
 /**
 * @static
 * @method _requestFullScreen
 * @private
 */
-	_requestFullScreen();
+	static _requestFullScreen();
 
 /**
 * @static
 * @method _cancelFullScreen
 * @private
 */
-	_cancelFullScreen();
+	static _cancelFullScreen();
 }
 
 declare class button {
-	ontouchstart(event);
+	static ontouchstart(event);
 }
 
 /**
@@ -1328,7 +1328,7 @@ declare class Input {
 * @static
 * @method initialize
 */
-	initialize();
+	static initialize();
 
 /**
 * Clears all the input data.
@@ -1336,7 +1336,7 @@ declare class Input {
 * @static
 * @method clear
 */
-	clear();
+	static clear();
 
 /**
 * Updates the input data.
@@ -1344,7 +1344,7 @@ declare class Input {
 * @static
 * @method update
 */
-	update();
+	static update();
 
 /**
 * Checks whether a key is currently pressed down.
@@ -1354,7 +1354,7 @@ declare class Input {
 * @param {String} keyName The mapped name of the key
 * @return {Boolean} True if the key is pressed
 */
-	isPressed(keyName);
+	static isPressed(keyName);
 
 /**
 * Checks whether a key is just pressed.
@@ -1364,7 +1364,7 @@ declare class Input {
 * @param {String} keyName The mapped name of the key
 * @return {Boolean} True if the key is triggered
 */
-	isTriggered(keyName);
+	static isTriggered(keyName);
 
 /**
 * Checks whether a key is just pressed or a key repeat occurred.
@@ -1374,7 +1374,7 @@ declare class Input {
 * @param {String} keyName The mapped name of the key
 * @return {Boolean} True if the key is repeated
 */
-	isRepeated(keyName);
+	static isRepeated(keyName);
 
 /**
 * Checks whether a key is kept depressed.
@@ -1384,7 +1384,7 @@ declare class Input {
 * @param {String} keyName The mapped name of the key
 * @return {Boolean} True if the key is long-pressed
 */
-	isLongPressed(keyName);
+	static isLongPressed(keyName);
 
 /**
 * [read-only] The four direction value as a number of the numpad, or 0 for neutral.
@@ -1393,7 +1393,7 @@ declare class Input {
 * @property dir4
 * @type Number
 */
-	dir4;
+	static dir4;
 
 /**
 * [read-only] The eight direction value as a number of the numpad, or 0 for neutral.
@@ -1402,7 +1402,7 @@ declare class Input {
 * @property dir8
 * @type Number
 */
-	dir8;
+	static dir8;
 
 /**
 * [read-only] The time of the last input in milliseconds.
@@ -1411,21 +1411,21 @@ declare class Input {
 * @property date
 * @type Number
 */
-	date;
+	static date;
 
 /**
 * @static
 * @method _wrapNwjsAlert
 * @private
 */
-	_wrapNwjsAlert();
+	static _wrapNwjsAlert();
 
 /**
 * @static
 * @method _setupEventHandlers
 * @private
 */
-	_setupEventHandlers();
+	static _setupEventHandlers();
 
 /**
 * @static
@@ -1433,7 +1433,7 @@ declare class Input {
 * @param {KeyboardEvent} event
 * @private
 */
-	_onKeyDown(event);
+	static _onKeyDown(event);
 
 /**
 * @static
@@ -1441,7 +1441,7 @@ declare class Input {
 * @param {Number} keyCode
 * @private
 */
-	_shouldPreventDefault(keyCode);
+	static _shouldPreventDefault(keyCode);
 
 /**
 * @static
@@ -1449,21 +1449,21 @@ declare class Input {
 * @param {KeyboardEvent} event
 * @private
 */
-	_onKeyUp(event);
+	static _onKeyUp(event);
 
 /**
 * @static
 * @method _onLostFocus
 * @private
 */
-	_onLostFocus();
+	static _onLostFocus();
 
 /**
 * @static
 * @method _pollGamepads
 * @private
 */
-	_pollGamepads();
+	static _pollGamepads();
 
 /**
 * @static
@@ -1472,28 +1472,28 @@ declare class Input {
 * @param {Number} index
 * @private
 */
-	_updateGamepadState(gamepad);
+	static _updateGamepadState(gamepad);
 
 /**
 * @static
 * @method _updateDirection
 * @private
 */
-	_updateDirection();
+	static _updateDirection();
 
 /**
 * @static
 * @method _signX
 * @private
 */
-	_signX();
+	static _signX();
 
 /**
 * @static
 * @method _signY
 * @private
 */
-	_signY();
+	static _signY();
 
 /**
 * @static
@@ -1503,7 +1503,7 @@ declare class Input {
 * @return {Number}
 * @private
 */
-	_makeNumpadDirection(x, y);
+	static _makeNumpadDirection(x, y);
 
 /**
 * @static
@@ -1512,7 +1512,7 @@ declare class Input {
 * @return {Boolean}
 * @private
 */
-	_isEscapeCompatible(keyName);
+	static _isEscapeCompatible(keyName);
 }
 
 //undefined
@@ -1533,7 +1533,7 @@ declare class TouchInput {
 * @static
 * @method initialize
 */
-	initialize();
+	static initialize();
 
 /**
 * Clears all the touch data.
@@ -1541,7 +1541,7 @@ declare class TouchInput {
 * @static
 * @method clear
 */
-	clear();
+	static clear();
 
 /**
 * Updates the touch data.
@@ -1549,7 +1549,7 @@ declare class TouchInput {
 * @static
 * @method update
 */
-	update();
+	static update();
 
 /**
 * Checks whether the mouse button or touchscreen is currently pressed down.
@@ -1558,7 +1558,7 @@ declare class TouchInput {
 * @method isPressed
 * @return {Boolean} True if the mouse button or touchscreen is pressed
 */
-	isPressed();
+	static isPressed();
 
 /**
 * Checks whether the left mouse button or touchscreen is just pressed.
@@ -1567,7 +1567,7 @@ declare class TouchInput {
 * @method isTriggered
 * @return {Boolean} True if the mouse button or touchscreen is triggered
 */
-	isTriggered();
+	static isTriggered();
 
 /**
 * Checks whether the left mouse button or touchscreen is just pressed
@@ -1577,7 +1577,7 @@ declare class TouchInput {
 * @method isRepeated
 * @return {Boolean} True if the mouse button or touchscreen is repeated
 */
-	isRepeated();
+	static isRepeated();
 
 /**
 * Checks whether the left mouse button or touchscreen is kept depressed.
@@ -1586,7 +1586,7 @@ declare class TouchInput {
 * @method isLongPressed
 * @return {Boolean} True if the left mouse button or touchscreen is long-pressed
 */
-	isLongPressed();
+	static isLongPressed();
 
 /**
 * Checks whether the right mouse button is just pressed.
@@ -1595,7 +1595,7 @@ declare class TouchInput {
 * @method isCancelled
 * @return {Boolean} True if the right mouse button is just pressed
 */
-	isCancelled();
+	static isCancelled();
 
 /**
 * Checks whether the mouse or a finger on the touchscreen is moved.
@@ -1604,7 +1604,7 @@ declare class TouchInput {
 * @method isMoved
 * @return {Boolean} True if the mouse or a finger on the touchscreen is moved
 */
-	isMoved();
+	static isMoved();
 
 /**
 * Checks whether the left mouse button or touchscreen is released.
@@ -1613,7 +1613,7 @@ declare class TouchInput {
 * @method isReleased
 * @return {Boolean} True if the mouse button or touchscreen is released
 */
-	isReleased();
+	static isReleased();
 
 /**
 * [read-only] The horizontal scroll amount.
@@ -1622,7 +1622,7 @@ declare class TouchInput {
 * @property wheelX
 * @type Number
 */
-	wheelX;
+	static wheelX;
 
 /**
 * [read-only] The vertical scroll amount.
@@ -1631,7 +1631,7 @@ declare class TouchInput {
 * @property wheelY
 * @type Number
 */
-	wheelY;
+	static wheelY;
 
 /**
 * [read-only] The x coordinate on the canvas area of the latest touch event.
@@ -1640,7 +1640,7 @@ declare class TouchInput {
 * @property x
 * @type Number
 */
-	x;
+	static x;
 
 /**
 * [read-only] The y coordinate on the canvas area of the latest touch event.
@@ -1649,7 +1649,7 @@ declare class TouchInput {
 * @property y
 * @type Number
 */
-	y;
+	static y;
 
 /**
 * [read-only] The time of the last input in milliseconds.
@@ -1658,14 +1658,14 @@ declare class TouchInput {
 * @property date
 * @type Number
 */
-	date;
+	static date;
 
 /**
 * @static
 * @method _setupEventHandlers
 * @private
 */
-	_setupEventHandlers();
+	static _setupEventHandlers();
 
 /**
 * @static
@@ -1673,7 +1673,7 @@ declare class TouchInput {
 * @param {MouseEvent} event
 * @private
 */
-	_onMouseDown(event);
+	static _onMouseDown(event);
 
 /**
 * @static
@@ -1681,7 +1681,7 @@ declare class TouchInput {
 * @param {MouseEvent} event
 * @private
 */
-	_onLeftButtonDown(event);
+	static _onLeftButtonDown(event);
 
 /**
 * @static
@@ -1689,7 +1689,7 @@ declare class TouchInput {
 * @param {MouseEvent} event
 * @private
 */
-	_onMiddleButtonDown(event);
+	static _onMiddleButtonDown(event);
 
 /**
 * @static
@@ -1697,7 +1697,7 @@ declare class TouchInput {
 * @param {MouseEvent} event
 * @private
 */
-	_onRightButtonDown(event);
+	static _onRightButtonDown(event);
 
 /**
 * @static
@@ -1705,7 +1705,7 @@ declare class TouchInput {
 * @param {MouseEvent} event
 * @private
 */
-	_onMouseMove(event);
+	static _onMouseMove(event);
 
 /**
 * @static
@@ -1713,7 +1713,7 @@ declare class TouchInput {
 * @param {MouseEvent} event
 * @private
 */
-	_onMouseUp(event);
+	static _onMouseUp(event);
 
 /**
 * @static
@@ -1721,7 +1721,7 @@ declare class TouchInput {
 * @param {WheelEvent} event
 * @private
 */
-	_onWheel(event);
+	static _onWheel(event);
 
 /**
 * @static
@@ -1729,7 +1729,7 @@ declare class TouchInput {
 * @param {TouchEvent} event
 * @private
 */
-	_onTouchStart(event);
+	static _onTouchStart(event);
 
 /**
 * @static
@@ -1737,7 +1737,7 @@ declare class TouchInput {
 * @param {TouchEvent} event
 * @private
 */
-	_onTouchMove(event);
+	static _onTouchMove(event);
 
 /**
 * @static
@@ -1745,7 +1745,7 @@ declare class TouchInput {
 * @param {TouchEvent} event
 * @private
 */
-	_onTouchEnd(event);
+	static _onTouchEnd(event);
 
 /**
 * @static
@@ -1753,7 +1753,7 @@ declare class TouchInput {
 * @param {TouchEvent} event
 * @private
 */
-	_onTouchCancel(event);
+	static _onTouchCancel(event);
 
 /**
 * @static
@@ -1761,7 +1761,7 @@ declare class TouchInput {
 * @param {PointerEvent} event
 * @private
 */
-	_onPointerDown(event);
+	static _onPointerDown(event);
 
 /**
 * @static
@@ -1770,7 +1770,7 @@ declare class TouchInput {
 * @param {Number} y
 * @private
 */
-	_onTrigger(x, y);
+	static _onTrigger(x, y);
 
 /**
 * @static
@@ -1779,7 +1779,7 @@ declare class TouchInput {
 * @param {Number} y
 * @private
 */
-	_onCancel(x, y);
+	static _onCancel(x, y);
 
 /**
 * @static
@@ -1788,7 +1788,7 @@ declare class TouchInput {
 * @param {Number} y
 * @private
 */
-	_onMove(x, y);
+	static _onMove(x, y);
 
 /**
 * @static
@@ -1797,7 +1797,7 @@ declare class TouchInput {
 * @param {Number} y
 * @private
 */
-	_onRelease(x, y);
+	static _onRelease(x, y);
 }
 
 /**
@@ -2209,28 +2209,28 @@ declare class Tilemap extends PIXI.Container {
 * @private
 */
 	_compareChildOrder(a, b);
-	isVisibleTile(tileId);
-	isAutotile(tileId);
-	getAutotileKind(tileId);
-	getAutotileShape(tileId);
-	makeAutotileId(kind, shape);
-	isSameKindTile(tileID1, tileID2);
-	isTileA1(tileId);
-	isTileA2(tileId);
-	isTileA3(tileId);
-	isTileA4(tileId);
-	isTileA5(tileId);
-	isWaterTile(tileId);
-	isWaterfallTile(tileId);
-	isGroundTile(tileId);
-	isShadowingTile(tileId);
-	isRoofTile(tileId);
-	isWallTopTile(tileId);
-	isWallSideTile(tileId);
-	isWallTile(tileId);
-	isFloorTypeAutotile(tileId);
-	isWallTypeAutotile(tileId);
-	isWaterfallTypeAutotile(tileId);
+	static isVisibleTile(tileId);
+	static isAutotile(tileId);
+	static getAutotileKind(tileId);
+	static getAutotileShape(tileId);
+	static makeAutotileId(kind, shape);
+	static isSameKindTile(tileID1, tileID2);
+	static isTileA1(tileId);
+	static isTileA2(tileId);
+	static isTileA3(tileId);
+	static isTileA4(tileId);
+	static isTileA5(tileId);
+	static isWaterTile(tileId);
+	static isWaterfallTile(tileId);
+	static isGroundTile(tileId);
+	static isShadowingTile(tileId);
+	static isRoofTile(tileId);
+	static isWallTopTile(tileId);
+	static isWallSideTile(tileId);
+	static isWallTile(tileId);
+	static isFloorTypeAutotile(tileId);
+	static isWallTypeAutotile(tileId);
+	static isWaterfallTypeAutotile(tileId);
 }
 
 /**
@@ -2481,7 +2481,7 @@ declare class ScreenSprite extends PIXI.Container {
 * @type Number
 */
 	opacity;
-	warnYep();
+	static warnYep();
 	anchor;
 	blendMode;
 
@@ -3016,7 +3016,7 @@ declare class WebAudio {
 * @param {Boolean} noAudio Flag for the no-audio mode
 * @return {Boolean} True if the audio system is available
 */
-	initialize(noAudio?);
+	static initialize(noAudio?);
 
 /**
 * Checks whether the browser can play ogg files.
@@ -3025,7 +3025,7 @@ declare class WebAudio {
 * @method canPlayOgg
 * @return {Boolean} True if the browser can play ogg files
 */
-	canPlayOgg();
+	static canPlayOgg();
 
 /**
 * Checks whether the browser can play m4a files.
@@ -3034,7 +3034,7 @@ declare class WebAudio {
 * @method canPlayM4a
 * @return {Boolean} True if the browser can play m4a files
 */
-	canPlayM4a();
+	static canPlayM4a();
 
 /**
 * Sets the master volume of the all audio.
@@ -3043,70 +3043,70 @@ declare class WebAudio {
 * @method setMasterVolume
 * @param {Number} value Master volume (min: 0, max: 1)
 */
-	setMasterVolume(value);
+	static setMasterVolume(value);
 
 /**
 * @static
 * @method _createContext
 * @private
 */
-	_createContext();
+	static _createContext();
 
 /**
 * @static
 * @method _detectCodecs
 * @private
 */
-	_detectCodecs();
+	static _detectCodecs();
 
 /**
 * @static
 * @method _createMasterGainNode
 * @private
 */
-	_createMasterGainNode();
+	static _createMasterGainNode();
 
 /**
 * @static
 * @method _setupEventHandlers
 * @private
 */
-	_setupEventHandlers();
+	static _setupEventHandlers();
 
 /**
 * @static
 * @method _onTouchStart
 * @private
 */
-	_onTouchStart();
+	static _onTouchStart();
 
 /**
 * @static
 * @method _onVisibilityChange
 * @private
 */
-	_onVisibilityChange();
+	static _onVisibilityChange();
 
 /**
 * @static
 * @method _onHide
 * @private
 */
-	_onHide();
+	static _onHide();
 
 /**
 * @static
 * @method _onShow
 * @private
 */
-	_onShow();
+	static _onShow();
 
 /**
 * @static
 * @method _shouldMuteOnHide
 * @private
 */
-	_shouldMuteOnHide();
+	static _shouldMuteOnHide();
 
 /**
 * @static
@@ -3114,7 +3114,7 @@ declare class WebAudio {
 * @param {Number} duration
 * @private
 */
-	_fadeIn(duration);
+	static _fadeIn(duration);
 
 /**
 * @static
@@ -3122,7 +3122,7 @@ declare class WebAudio {
 * @param {Number} duration
 * @private
 */
-	_fadeOut(duration);
+	static _fadeOut(duration);
 
 /**
 * Clears the audio data.
@@ -3376,7 +3376,7 @@ declare class Html5Audio {
 * @method setup
 * @param {String} url The url of the audio file
 */
-	setup(url);
+	static setup(url);
 
 /**
 * Initializes the audio system.
@@ -3385,63 +3385,63 @@ declare class Html5Audio {
 * @method initialize
 * @return {Boolean} True if the audio system is available
 */
-	initialize();
+	static initialize();
 
 /**
 * @static
 * @method _setupEventHandlers
 * @private
 */
-	_setupEventHandlers();
+	static _setupEventHandlers();
 
 /**
 * @static
 * @method _onTouchStart
 * @private
 */
-	_onTouchStart();
+	static _onTouchStart();
 
 /**
 * @static
 * @method _onVisibilityChange
 * @private
 */
-	_onVisibilityChange();
+	static _onVisibilityChange();
 
 /**
 * @static
 * @method _onLoadedData
 * @private
 */
-	_onLoadedData();
+	static _onLoadedData();
 
 /**
 * @static
 * @method _onError
 * @private
 */
-	_onError();
+	static _onError();
 
 /**
 * @static
 * @method _onEnded
 * @private
 */
-	_onEnded();
+	static _onEnded();
 
 /**
 * @static
 * @method _onHide
 * @private
 */
-	_onHide();
+	static _onHide();
 
 /**
 * @static
 * @method _onShow
 * @private
 */
-	_onShow();
+	static _onShow();
 
 /**
 * Clears the audio data.
@@ -3449,7 +3449,7 @@ declare class Html5Audio {
 * @static
 * @method clear
 */
-	clear();
+	static clear();
 
 /**
 * Set the URL of static se.
@@ -3457,7 +3457,7 @@ declare class Html5Audio {
 * @static
 * @param {String} url
 */
-	setStaticSe(url);
+	static setStaticSe(url);
 
 /**
 * [read-only] The url of the audio file.
@@ -3465,7 +3465,7 @@ declare class Html5Audio {
 * @property url
 * @type String
 */
-	url;
+	static url;
 
 /**
 * Checks whether the audio data is ready to play.
@@ -3474,7 +3474,7 @@ declare class Html5Audio {
 * @method isReady
 * @return {Boolean} True if the audio data is ready to play
 */
-	isReady();
+	static isReady();
 
 /**
 * Checks whether a loading error has occurred.
@@ -3483,7 +3483,7 @@ declare class Html5Audio {
 * @method isError
 * @return {Boolean} True if a loading error has occurred
 */
-	isError();
+	static isError();
 
 /**
 * Checks whether the audio is playing.
@@ -3492,7 +3492,7 @@ declare class Html5Audio {
 * @method isPlaying
 * @return {Boolean} True if the audio is playing
 */
-	isPlaying();
+	static isPlaying();
 
 /**
 * Plays the audio.
@@ -3502,7 +3502,7 @@ declare class Html5Audio {
 * @param {Boolean} loop Whether the audio data play in a loop
 * @param {Number} offset The start position to play in seconds
 */
-	play(loop, offset);
+	static play(loop, offset);
 
 /**
 * Stops the audio.
@@ -3510,7 +3510,7 @@ declare class Html5Audio {
 * @static
 * @method stop
 */
-	stop();
+	static stop();
 
 /**
 * Performs the audio fade-in.
@@ -3519,7 +3519,7 @@ declare class Html5Audio {
 * @method fadeIn
 * @param {Number} duration Fade-in time in seconds
 */
-	fadeIn(duration);
+	static fadeIn(duration);
 
 /**
 * Performs the audio fade-out.
@@ -3528,7 +3528,7 @@ declare class Html5Audio {
 * @method fadeOut
 * @param {Number} duration Fade-out time in seconds
 */
-	fadeOut(duration);
+	static fadeOut(duration);
 
 /**
 * Gets the seek position of the audio.
@@ -3536,7 +3536,7 @@ declare class Html5Audio {
 * @static
 * @method seek
 */
-	seek();
+	static seek();
 
 /**
 * Add a callback function that will be called when the audio data is loaded.
@@ -3545,7 +3545,7 @@ declare class Html5Audio {
 * @method addLoadListener
 * @param {Function} listner The callback function
 */
-	addLoadListener(listner);
+	static addLoadListener(listner);
 
 /**
 * @static
@@ -3553,7 +3553,7 @@ declare class Html5Audio {
 * @param {String} url
 * @private
 */
-	_load(url);
+	static _load(url);
 
 /**
 * @static
@@ -3562,14 +3562,14 @@ declare class Html5Audio {
 * @param {Number} offset
 * @private
 */
-	_startPlaying(loop, offset);
+	static _startPlaying(loop, offset);
 
 /**
 * @static
 * @method _onLoad
 * @private
 */
-	_onLoad();
+	static _onLoad();
 
 /**
 * @static
@@ -3577,7 +3577,7 @@ declare class Html5Audio {
 * @params {Number} duration
 * @private
 */
-	_startGainTween(duration);
+	static _startGainTween(duration);
 
 /**
 * @static
@@ -3585,7 +3585,7 @@ declare class Html5Audio {
 * @param {Number} volume
 * @private
 */
-	_applyTweenValue(volume);
+	static _applyTweenValue(volume);
 }
 
 /**
@@ -3594,7 +3594,7 @@ declare class Html5Audio {
 * @class JsonEx
 */
 declare class JsonEx {
-	_generateId();
+	static _generateId();
 
 /**
 * Converts an object to a JSON string with object information.
@@ -3604,8 +3604,8 @@ declare class JsonEx {
 * @param {Object} object The object to be converted
 * @return {String} The JSON string
 */
-	stringify(object);
-	_restoreCircularReference(circulars);
+	static stringify(object);
+	static _restoreCircularReference(circulars);
 
 /**
 * Parses a JSON string and reconstructs the corresponding object.
@@ -3615,9 +3615,9 @@ declare class JsonEx {
 * @param {String} json The JSON string
 * @return {Object} The reconstructed object
 */
-	parse(json);
-	_linkCircularReference(contents, circulars, registry);
-	_cleanMetadata(object);
+	static parse(json);
+	static _linkCircularReference(contents, circulars, registry);
+	static _cleanMetadata(object);
 
 /**
 * Makes a deep copy of the specified object.
@@ -3627,7 +3627,7 @@ declare class JsonEx {
 * @param {Object} object The object to be copied
 * @return {Object} The copied object
 */
-	makeDeepCopy(object);
+	static makeDeepCopy(object);
 
 /**
 * @static
@@ -3638,7 +3638,7 @@ declare class JsonEx {
 * @return {Object}
 * @private
 */
-	_encode(value, circular, depth);
+	static _encode(value, circular, depth);
 
 /**
 * @static
@@ -3649,7 +3649,7 @@ declare class JsonEx {
 * @return {Object}
 * @private
 */
-	_decode(value, circular, registry);
+	static _decode(value, circular, registry);
 
 /**
 * @static
@@ -3658,7 +3658,7 @@ declare class JsonEx {
 * @return {String}
 * @private
 */
-	_getConstructorName(value);
+	static _getConstructorName(value);
 
 /**
 * @static
@@ -3668,24 +3668,24 @@ declare class JsonEx {
 * @return {Object}
 * @private
 */
-	_resetPrototype(value, prototype);
+	static _resetPrototype(value, prototype);
 }
 
 declare class Decrypter {
-	checkImgIgnore(url);
-	decryptImg(url, bitmap);
-	decryptHTML5Audio(url, bgm, pos);
-	cutArrayHeader(arrayBuffer, length);
-	decryptArrayBuffer(arrayBuffer);
-	createBlobUrl(arrayBuffer);
-	extToEncryptExt(url);
-	readEncryptionkey();
+	static checkImgIgnore(url);
+	static decryptImg(url, bitmap);
+	static decryptHTML5Audio(url, bgm, pos);
+	static cutArrayHeader(arrayBuffer, length);
+	static decryptArrayBuffer(arrayBuffer);
+	static createBlobUrl(arrayBuffer);
+	static extToEncryptExt(url);
+	static readEncryptionkey();
 }
 
 declare class requestFile {
-	onload();
-	onerror();
-	onload();
+	static onload();
+	static onerror();
+	static onload();
 }
 
 /**
@@ -3694,8 +3694,8 @@ declare class requestFile {
 * @class ResourceHandler
 */
 declare class ResourceHandler {
-	createLoader(url, retryMethod, resignMethod, retryInterval);
-	exists();
-	retry();
+	static createLoader(url, retryMethod, resignMethod, retryInterval);
+	static exists();
+	static retry();
 }
 

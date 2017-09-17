@@ -1889,6 +1889,6 @@ declare class Game_Interpreter {
 // Plugin Command
 	command356();
 	pluginCommand(command, args);
-	requestImages(list, commonList);
+	static requestImages(list, commonList);
 }
 

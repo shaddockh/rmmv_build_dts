@@ -236,7 +236,7 @@ declare class Scene_Boot extends Scene_Base {
 	initialize();
 	create();
 	loadSystemWindowImage();
-	loadSystemImages();
+	static loadSystemImages();
 	isReady();
 	isGameFontLoaded();
 	start();

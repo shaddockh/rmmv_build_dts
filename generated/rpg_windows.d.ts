@@ -286,7 +286,7 @@ declare class Window_MenuCommand extends Window_Command {
 
 //undefined
 	initialize(x?, y?);
-	initCommandPosition();
+	static initCommandPosition();
 	windowWidth();
 	numVisibleRows();
 	makeCommandList();
@@ -1124,7 +1124,7 @@ declare class Window_BattleItem extends Window_ItemList {
 // The window for selecting New Game/Continue on the title screen.
 declare class Window_TitleCommand extends Window_Command {
 	initialize();
-	initCommandPosition();
+	static initCommandPosition();
 	windowWidth();
 	updatePlacement();
 	makeCommandList();
