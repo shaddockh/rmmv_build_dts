@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es2015"
+    },
+    "exclude": ["node_modules", "js"],
+    "typeAcquisition": {
+        "enable": true
+    }
+}

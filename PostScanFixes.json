@@ -1,0 +1,64 @@
+[
+    {
+        "className": "String",
+        "action": "convert-to-interface"
+    },
+    {
+        "className": "Number",
+        "action": "convert-to-interface"
+    },
+    {
+        "className": "Math",
+        "action": "convert-to-interface"
+    },
+    {
+        "className": "Window",
+        "action": "convert-to-interface"
+    },
+    {
+        "className": "window",
+        "action": "convert-to-interface"
+    },
+    {
+        "className": "Window_NameEdit",
+        "memberName": "name",
+        "comment": "FIXME: name is a function here, but variable in parent class",
+        "action": "comment-out"
+    },
+    {
+        "className": "TilingSprite",
+        "comment": "FIXME: extends PIXI.extrax.PictureTilingSprite but no d.ts for it",
+        "action": "remove-extends"
+    },
+    {
+        "className": "Game_Player",
+        "memberName": "update",
+        "comment": "FIXME: update overloads parent update with a parameter, but parent doesn't have it",
+        "action": "set-optional-param",
+        "paramName": "sceneActive"
+    },
+    {
+        "className": "ImageManager",
+        "memberName": "*",
+        "action": "set-optional-param",
+        "paramName": "hue"
+    },
+    {
+        "className": "Window_Base",
+        "memberName": "drawText",
+        "action": "set-optional-param",
+        "paramName": "maxWidth"
+    },
+    {
+        "className": "Window_Base",
+        "memberName": "drawItemName",
+        "action": "set-optional-param",
+        "paramName": "width"
+    },
+    {
+        "className": "*",
+        "memberName": "initialize",
+        "action": "set-optional-param",
+        "paramName": "*"
+    }
+]
