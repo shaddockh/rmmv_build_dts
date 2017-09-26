@@ -1,11 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const DtsGenerator_1 = require("./DtsGenerator");
+const ScriptAnalyzer_1 = require("./ScriptAnalyzer");
 const fs = require("fs");
 // import * as functionExtractor from "function-extractor";
 const readline = require("readline");
 const custom_function_extractor_1 = require("./custom_function_extractor");
 const Fixes_1 = require("./Fixes");
-const NamespaceDeclaration_1 = require("./NamespaceDeclaration");
+const dtsMembers_1 = require("./dtsMembers");
 function loadSourceFile(currentFilename) {
     return new Promise((resolve, failure) => {
         let lines = [];
@@ -23,6 +25,21 @@ function loadSourceFile(currentFilename) {
             resolve(lines);
         });
     });
+}
+function loadAndExtractNew(currentFilename) {
+    console.log("Processing File: " + currentFilename);
+    const source = fs.readFileSync(currentFilename, "utf8");
+    const analyzer = ScriptAnalyzer_1.default.Default(source);
+    analyzer.analyze();
+    const fixer = new Fixes_1.FixHandler();
+    fixer.loadFixes("./PostScanFixes.json");
+    const dtsGenerator = new DtsGenerator_1.default(analyzer, fixer);
+    const outName = "generated2/" +
+        currentFilename
+            .split("/")
+            .pop()
+            .replace(".js", ".d.ts");
+    console.log(dtsGenerator.generate(outName));
 }
 function loadAndExtract(currentFilename) {
     const source = fs.readFileSync(currentFilename, "utf8");
@@ -43,7 +60,7 @@ function extract(currentFilename, lines, functions) {
             .pop()
             .replace(".js", ".d.ts");
     const destFd = fs.openSync(outName, "w");
-    let dts = new NamespaceDeclaration_1.NamespaceList();
+    let dts = new dtsMembers_1.NamespaceList();
     let lastnamespace = "";
     let currentNamespace;
     for (let i = 0; i < functions.length; i++) {
@@ -70,7 +87,7 @@ function extract(currentFilename, lines, functions) {
                     // we only care about the getter
                     if (func.name == "get") {
                         let ns = dts.getNamespace(propDefinition.namespace);
-                        let member = new NamespaceDeclaration_1.NamespaceMember();
+                        let member = new dtsMembers_1.NamespaceMember();
                         member.name = propDefinition.property;
                         member.isProp = true;
                         member.isStatic = propDefinition.isStatic;
@@ -93,7 +110,7 @@ function extract(currentFilename, lines, functions) {
         else {
             lastnamespace = func.namespace;
             let ns = dts.getNamespace(func.namespace);
-            let member = new NamespaceDeclaration_1.NamespaceMember();
+            let member = new dtsMembers_1.NamespaceMember();
             member.params = func.params.map(p => {
                 return p.name;
             });
@@ -198,9 +215,9 @@ function getFormalComment(lineNumber, lines) {
 }
 let base = "./v1.4.2_c";
 base = "./v1.5.1";
-loadAndExtract(base + "/rpg_core.js");
-loadAndExtract(base + "/rpg_managers.js");
-loadAndExtract(base + "/rpg_objects.js");
-loadAndExtract(base + "/rpg_scenes.js");
-loadAndExtract(base + "/rpg_sprites.js");
-loadAndExtract(base + "/rpg_windows.js");
+loadAndExtractNew(base + "/rpg_core.js");
+loadAndExtractNew(base + "/rpg_managers.js");
+loadAndExtractNew(base + "/rpg_objects.js");
+loadAndExtractNew(base + "/rpg_scenes.js");
+loadAndExtractNew(base + "/rpg_sprites.js");
+loadAndExtractNew(base + "/rpg_windows.js");

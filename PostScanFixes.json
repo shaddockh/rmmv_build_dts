@@ -26,11 +26,6 @@
         "action": "comment-out"
     },
     {
-        "className": "TilingSprite",
-        "comment": "FIXME: extends PIXI.extrax.PictureTilingSprite but no d.ts for it",
-        "action": "remove-extends"
-    },
-    {
         "className": "Game_Player",
         "memberName": "update",
         "comment": "FIXME: update overloads parent update with a parameter, but parent doesn't have it",
@@ -60,5 +55,110 @@
         "memberName": "initialize",
         "action": "set-optional-param",
         "paramName": "*"
+    },
+    {
+        "className": "AudioManager",
+        "memberName": "*",
+        "action": "set-optional-param",
+        "paramName": "pos"
+    },
+    {
+        "className": "AudioManager",
+        "memberName": "*",
+        "action": "set-param-type",
+        "paramName": "bgm",
+        "type": "AudioDefinition"
+    },
+    {
+        "className": "AudioManager",
+        "memberName": "*",
+        "action": "set-param-type",
+        "paramName": "bgs",
+        "type": "AudioDefinition"
+    },
+    {
+        "className": "AudioManager",
+        "memberName": "*",
+        "action": "set-param-type",
+        "paramName": "me",
+        "type": "AudioDefinition"
+    },
+    {
+        "className": "global",
+        "memberName": "$gameTemp",
+        "action": "set-member-type",
+        "type": "Game_Temp"
+    },
+    {
+        "className": "global",
+        "memberName": "$gameSystem",
+        "action": "set-member-type",
+        "type": "Game_System"
+    },
+    {
+        "className": "global",
+        "memberName": "$gameScreen",
+        "action": "set-member-type",
+        "type": "Game_Screen"
+    },
+    {
+        "className": "global",
+        "memberName": "$gameTimer",
+        "action": "set-member-type",
+        "type": "Game_Timer"
+    },
+    {
+        "className": "global",
+        "memberName": "$gameMessage",
+        "action": "set-member-type",
+        "type": "Game_Message"
+    },
+    {
+        "className": "global",
+        "memberName": "$gameSwitches",
+        "action": "set-member-type",
+        "type": "Game_Switches"
+    },
+    {
+        "className": "global",
+        "memberName": "$gameVariables",
+        "action": "set-member-type",
+        "type": "Game_Variables"
+    },
+    {
+        "className": "global",
+        "memberName": "$gameSelfSwitches",
+        "action": "set-member-type",
+        "type": "Game_SelfSwitches"
+    },
+    {
+        "className": "global",
+        "memberName": "$gameActors",
+        "action": "set-member-type",
+        "type": "Game_Actors"
+    },
+    {
+        "className": "global",
+        "memberName": "$gameParty",
+        "action": "set-member-type",
+        "type": "Game_Party"
+    },
+    {
+        "className": "global",
+        "memberName": "$gameTroop",
+        "action": "set-member-type",
+        "type": "Game_Troop"
+    },
+    {
+        "className": "global",
+        "memberName": "$gameMap",
+        "action": "set-member-type",
+        "type": "Game_Map"
+    },
+    {
+        "className": "global",
+        "memberName": "$gamePlayer",
+        "action": "set-member-type",
+        "type": "Game_Player"
     }
 ]

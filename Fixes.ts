@@ -1,12 +1,14 @@
-import { NamespaceDeclaration, NamespaceMember } from "./NamespaceDeclaration";
+import { NamespaceDeclaration, NamespaceMember } from "./dtsMembers";
 export const enum FixAction {
     CommentOut = "comment-out",
     RemoveClassExtends = "remove-extends",
     SetOptionalParam = "set-optional-param",
+    SetParamType = "set-param-type",
     ConvertToInterface = "convert-to-interface",
     RenameMember = "rename-member",
     StaticClass = "static-class",
-    StaticMethod = "static-method"
+    StaticMethod = "static-method",
+    SetMemberType = "set-member-type"
 }
 
 export interface Fix {
@@ -15,6 +17,7 @@ export interface Fix {
     comment?: string;
     action: FixAction;
     paramName?: string;
+    type?: string;
     replacementName?: string;
 }
 
@@ -27,7 +30,9 @@ export class FixHandler {
                 existingComment += "\n//" + fixComment;
             }
         } else {
-            existingComment = "//" + fixComment;
+            if (fixComment) {
+                existingComment += "//" + fixComment;
+            }
         }
 
         return existingComment;
@@ -70,11 +75,14 @@ export class FixHandler {
                         if (!member.params[i].endsWith("?")) {
                             console.log("Setting optional param: " + member.name + " " + member.params[i]);
                             member.params[i] += "?";
-                            member.comment = this.getFixComment(member.comment, fix.comment);
                         }
 
                         // In addition, if one item is optional, then the remaining items need to be optional too
                         forceSetOptional = true;
+                    }
+
+                    if (forceSetOptional) {
+                        member.comment = this.getFixComment(member.comment, fix.comment);
                     }
                 }
                 break;
@@ -89,6 +97,30 @@ export class FixHandler {
                 console.log("Changing method to static: " + member.name);
                 member.isStatic = true;
                 member.comment = this.getFixComment(member.comment, fix.comment);
+                break;
+
+            case FixAction.SetParamType:
+                let isSet = false;
+                for (let i = 0; i < member.params.length; i++) {
+                    if (fix.paramName == "*" || member.params[i] == fix.paramName) {
+                        if (member.params[i].indexOf(":") == -1) {
+                            console.log("Setting param type: " + member.name + " " + member.params[i] + ":" + fix.type);
+
+                            isSet = true;
+                            member.params[i] += ": " + fix.type;
+                        }
+                    }
+                }
+
+                if (isSet) {
+                    member.comment = this.getFixComment(member.comment, fix.comment);
+                }
+                break;
+
+            case FixAction.SetMemberType:
+                console.log("Setting member type to: " + member.name + " - " + fix.type);
+                member.comment = this.getFixComment(member.comment, fix.comment);
+                member.type = fix.type;
                 break;
         }
     }
