@@ -28,7 +28,7 @@ class GlobalObjectClassMethodExtractor {
     extract(ast) {
         const results = [];
         // Get object functions
-        let matches = esquery(ast, "Program > ExpressionStatement > AssignmentExpression:has(FunctionExpression)");
+        let matches = esquery(ast, "Program > ExpressionStatement > !AssignmentExpression > FunctionExpression");
         //Program > ExpressionStatement > AssignmentExpression:has(FunctionExpression)
         // console.log(JSON.stringify(matches, null, 2));
         matches.forEach(node => {
@@ -43,9 +43,8 @@ class GlobalObjectClassMethodExtractor {
             if (funcName[1].name != "prototype") {
                 func.type = "StaticMethod";
             }
-            let params = esquery(node, "FunctionExpression > Identifier");
+            let params = node.right.params;
             func.parameters = params.map(p => p.name);
-            //console.log(func);
             results.push(func);
         });
         return results;
@@ -78,7 +77,7 @@ exports.GlobalVariableExtractor = GlobalVariableExtractor;
 class GlobalFunctionExtractor {
     extract(ast) {
         const results = [];
-        let hasPrototypesList = null;
+        let classFunctionList = null;
         let constructors = null;
         let matches = esquery(ast, "Program > FunctionDeclaration");
         matches.forEach(node => {
@@ -90,13 +89,19 @@ class GlobalFunctionExtractor {
                 valueType: null
             };
             // do some caching
-            if (!hasPrototypesList) {
+            if (!classFunctionList) {
                 //lets build up any prototypes in this file
-                let prototypeMatches = esquery(ast, `Program > ExpressionStatement > AssignmentExpression:has([property.name="prototype"])`);
-                hasPrototypesList = {};
-                prototypeMatches.forEach(p => {
-                    if (p.left && p.left.object && p.left.object.object && p.left.object.object.name) {
-                        hasPrototypesList[p.left.object.object.name] = true;
+                let classFunctionMatches = esquery(ast, `Program > ExpressionStatement > !AssignmentExpression > FunctionExpression`);
+                classFunctionList = {};
+                classFunctionMatches.forEach(p => {
+                    if (p.left && p.left.object) {
+                        // difference between prototype method and static method
+                        if (p.left.object.object && p.left.object.object.name) {
+                            classFunctionList[p.left.object.object.name] = true;
+                        }
+                        else {
+                            classFunctionList[p.left.object.name] = true;
+                        }
                     }
                 });
                 constructors = {};
@@ -110,7 +115,7 @@ class GlobalFunctionExtractor {
             node.params.forEach(p => {
                 func.parameters.push(p.name);
             });
-            if (hasPrototypesList[func.name]) {
+            if (classFunctionList[func.name]) {
                 if (constructors[func.name]) {
                     func.valueType = constructors[func.name];
                 }

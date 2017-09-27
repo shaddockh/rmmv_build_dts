@@ -209,6 +209,21 @@ describe("GlobalObjectClassMethodExtractor", function () {
         chai_1.expect(results).to.have.lengthOf(1);
         chai_1.expect(results[0].name).to.equal("loadScript");
     });
+    it("should not grab inner function parameters", function () {
+        const script = `
+            Foo.meth = function() {
+                this._arr.forEach(function(buffer) {
+                    // do something
+                }.bind(this));
+            };
+        `;
+        const ast = esprima.parseScript(script, { comment: true, range: true, tokens: true });
+        const extractor = new extractors.GlobalObjectClassMethodExtractor();
+        const results = extractor.extract(ast);
+        chai_1.expect(results).to.have.lengthOf(1);
+        chai_1.expect(results[0].name).to.equal("meth");
+        chai_1.expect(results[0].parameters).to.have.lengthOf(0);
+    });
 });
 describe("GlobalObjectClassPropertyExtractor", function () {
     const script = `

@@ -20,6 +20,10 @@
         "action": "convert-to-interface"
     },
     {
+        "className": "Array",
+        "action": "convert-to-interface"
+    },
+    {
         "className": "Window_NameEdit",
         "memberName": "name",
         "comment": "FIXME: name is a function here, but variable in parent class",
