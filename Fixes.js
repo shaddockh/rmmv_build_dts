@@ -87,9 +87,18 @@ class FixHandler {
                 member.type = fix.type;
                 break;
             case "apply-constructor-comment-to-class" /* ApplyConstructorCommentToClass */:
-                console.log("Moving constructor comment to class: " + decl.name);
-                decl.comment = member.comment;
-                member.comment = null;
+                if (!decl.comment) {
+                    console.log("Moving constructor comment to class: " + decl.name);
+                    decl.comment = member.comment;
+                    member.comment = null;
+                }
+                break;
+            case "copy-params-to-constructor" /* CopyParamsToConstructor */:
+                let index = decl.members.findIndex(m => m.isConstructor);
+                if (index > -1) {
+                    console.log("Copying params to constructor from : " + decl.name);
+                    decl.members[index].params = member.params.slice(0);
+                }
                 break;
         }
     }

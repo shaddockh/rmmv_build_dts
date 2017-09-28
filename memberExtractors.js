@@ -132,8 +132,11 @@ class GlobalFunctionExtractor {
                 constructors = {};
                 let constructorMatches = esquery(ast, `Program > ExpressionStatement > !AssignmentExpression > CallExpression:has([object.name="Object"][property.name="create"])  `);
                 constructorMatches.forEach(c => {
-                    let ids = esquery(c, `CallExpression .arguments`);
-                    constructors[c.left.object.name] = ids[0].object.name;
+                    let ids = esquery(c, `CallExpression .arguments Identifier`);
+                    constructors[c.left.object.name] = ids
+                        .map((id) => id.name)
+                        .filter(id => id != "prototype")
+                        .join(".");
                 });
             }
             // we have a FunctionDeclaration coming in

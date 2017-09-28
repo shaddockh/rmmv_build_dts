@@ -9,7 +9,8 @@ export const enum FixAction {
     StaticClass = "static-class",
     StaticMethod = "static-method",
     SetMemberType = "set-member-type",
-    ApplyConstructorCommentToClass = "apply-constructor-comment-to-class"
+    ApplyConstructorCommentToClass = "apply-constructor-comment-to-class",
+    CopyParamsToConstructor = "copy-params-to-constructor"
 }
 
 export interface Fix {
@@ -125,9 +126,19 @@ export class FixHandler {
                 break;
 
             case FixAction.ApplyConstructorCommentToClass:
-                console.log("Moving constructor comment to class: " + decl.name);
-                decl.comment = member.comment;
-                member.comment = null;
+                if (!decl.comment) {
+                    console.log("Moving constructor comment to class: " + decl.name);
+                    decl.comment = member.comment;
+                    member.comment = null;
+                }
+                break;
+
+            case FixAction.CopyParamsToConstructor:
+                let index = decl.members.findIndex(m => m.isConstructor);
+                if (index > -1) {
+                    console.log("Copying params to constructor from : " + decl.name);
+                    decl.members[index].params = member.params.slice(0);
+                }
                 break;
         }
     }

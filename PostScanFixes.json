@@ -187,5 +187,10 @@
         "className": "*",
         "memberName": "constructor",
         "action": "apply-constructor-comment-to-class"
+    },
+    {
+        "className": "*",
+        "memberName": "initialize",
+        "action": "copy-params-to-constructor"
     }
 ]

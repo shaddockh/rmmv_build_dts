@@ -80,6 +80,20 @@ describe("GlobalFunctionExtractor", function () {
         chai_1.expect(results[0].namespace).to.equal("C");
         chai_1.expect(results[0].valueType).to.equal("A");
     });
+    it("should identify top level functions that are subclasses of long parents", function () {
+        const script = `
+            function C() {}
+            C.prototype = Object.create(A.B.C.prototype);
+            C.prototype.x = function() {};
+            B.prototype.method = function() {};
+        `;
+        const ast = esprima.parseScript(script, { comment: true, loc: true });
+        const extractor = new extractors.GlobalFunctionExtractor();
+        const results = extractor.extract(ast);
+        chai_1.expect(results).to.have.lengthOf(1);
+        chai_1.expect(results[0].namespace).to.equal("C");
+        chai_1.expect(results[0].valueType).to.equal("A.B.C");
+    });
     it("should not grab inner calls when looking for constructor", function () {
         const script = `
             function Foo() {};

@@ -162,8 +162,11 @@ export class GlobalFunctionExtractor implements Extractor {
                 );
 
                 constructorMatches.forEach(c => {
-                    let ids = esquery(c, `CallExpression .arguments`);
-                    constructors[c.left.object.name] = ids[0].object.name;
+                    let ids = esquery(c, `CallExpression .arguments Identifier`);
+                    constructors[c.left.object.name] = ids
+                        .map((id: any) => id.name)
+                        .filter(id => id != "prototype")
+                        .join(".");
                 });
             }
 
