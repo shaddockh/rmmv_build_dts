@@ -1,5 +1,18 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+class RenderUtils {
+    static formatComment(indent, commentBlock) {
+        let splits = commentBlock.split("\n");
+        if (splits.length == 1) {
+            return indent + "/* " + splits[0] + " */";
+        }
+        else {
+            splits[0] = "/*" + splits[0];
+            splits.push("*/");
+            return splits.map(s => indent + s).join("\n");
+        }
+    }
+}
 class NamespaceDeclaration {
     constructor() {
         this.members = [];
@@ -47,7 +60,7 @@ class NamespaceDeclaration {
         // first build out the interface, then the class
         let output = [];
         if (this.comment) {
-            output.push(this.comment);
+            output.push(RenderUtils.formatComment("", this.comment));
         }
         if (!this.isGlobal) {
             if (this.extendsObject) {
@@ -90,7 +103,7 @@ class NamespaceMember {
         let output = [];
         if (this.comment) {
             output.push("");
-            output.push(this.comment);
+            output.push(RenderUtils.formatComment(indent, this.comment));
         }
         let memberLine = "";
         if (this.isGlobal && this.isProp) {

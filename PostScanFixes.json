@@ -164,5 +164,28 @@
         "memberName": "$gamePlayer",
         "action": "set-member-type",
         "type": "Game_Player"
+    },
+    {
+        "className": "global",
+        "memberName": "$dataActors",
+        "action": "set-member-type",
+        "type": "ActorData[]"
+    },
+    {
+        "className": "global",
+        "memberName": "$dataWeapons",
+        "action": "set-member-type",
+        "type": "WeaponData[]"
+    },
+    {
+        "className": "global",
+        "memberName": "$dataItems",
+        "action": "set-member-type",
+        "type": "ItemData[]"
+    },
+    {
+        "className": "*",
+        "memberName": "constructor",
+        "action": "apply-constructor-comment-to-class"
     }
 ]

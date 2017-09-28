@@ -40,12 +40,22 @@ A.staticFunc = function() {
 
 describe("GlobalFunctionExtractor", function() {
     it("should extract top level functions", function() {
-        const ast = esprima.parseScript(bigScript, { comment: true, range: true, tokens: true });
+        const ast = esprima.parseScript(bigScript, { comment: true, loc: true });
         const extractor = new extractors.GlobalFunctionExtractor();
 
         const results = extractor.extract(ast);
         expect(results).to.have.lengthOf(2);
         expect(results[0].namespace).to.be.null;
+        expect(results[1].namespace).to.be.equal("A");
+    });
+
+    it("should extract top level functions with comments", function() {
+        const ast = esprima.parseScript(bigScript, { comment: true, loc: true });
+        const extractor = new extractors.GlobalFunctionExtractor();
+
+        const results = extractor.extract(ast);
+        expect(results[1].name).to.equal("constructor");
+        expect(results[1].comment).to.equal("* This is a class");
     });
 
     it("should identify top level functions that are actually constructors", function() {
@@ -55,7 +65,7 @@ describe("GlobalFunctionExtractor", function() {
             B.prototype.method = function() {};
         `;
 
-        const ast = esprima.parseScript(script, { comment: true, range: true, tokens: true });
+        const ast = esprima.parseScript(script, { comment: true, loc: true });
         const extractor = new extractors.GlobalFunctionExtractor();
 
         const results = extractor.extract(ast);
@@ -72,7 +82,7 @@ describe("GlobalFunctionExtractor", function() {
             B.prototype.method = function() {};
         `;
 
-        const ast = esprima.parseScript(script, { comment: true, range: true, tokens: true });
+        const ast = esprima.parseScript(script, { comment: true, loc: true });
         const extractor = new extractors.GlobalFunctionExtractor();
 
         const results = extractor.extract(ast);
@@ -103,7 +113,7 @@ describe("GlobalFunctionExtractor", function() {
             };
         `;
 
-        const ast = esprima.parseScript(script, { comment: true, range: true, tokens: true });
+        const ast = esprima.parseScript(script, { comment: true, loc: true });
         const extractor = new extractors.GlobalFunctionExtractor();
 
         const results = extractor.extract(ast);
@@ -117,7 +127,7 @@ describe("GlobalFunctionExtractor", function() {
 
 describe("GlobalVariableExtractor", function() {
     it("should extract top level globals", function() {
-        const ast = esprima.parseScript(bigScript, { comment: true, range: true, tokens: true });
+        const ast = esprima.parseScript(bigScript, { comment: true, loc: true });
         const extractor = new extractors.GlobalVariableExtractor();
 
         const results = extractor.extract(ast);
@@ -132,7 +142,7 @@ describe("GlobalVariableExtractor", function() {
         const script = `
             var foo = null;
         `;
-        const ast = esprima.parseScript(script, { comment: true, range: true, tokens: true });
+        const ast = esprima.parseScript(script, { comment: true, loc: true });
         const extractor = new extractors.GlobalVariableExtractor();
 
         const results = extractor.extract(ast);
@@ -146,7 +156,7 @@ describe("GlobalVariableExtractor", function() {
             var bleh = {};
         `;
 
-        const ast = esprima.parseScript(script, { comment: true, range: true, tokens: true });
+        const ast = esprima.parseScript(script, { comment: true, loc: true });
         const extractor = new extractors.GlobalVariableExtractor();
 
         const results = extractor.extract(ast);
@@ -161,7 +171,7 @@ describe("GlobalVariableExtractor", function() {
             var bleh = [];
         `;
 
-        const ast = esprima.parseScript(script, { comment: true, range: true, tokens: true });
+        const ast = esprima.parseScript(script, { comment: true, loc: true });
         const extractor = new extractors.GlobalVariableExtractor();
 
         const results = extractor.extract(ast);
@@ -182,7 +192,7 @@ describe("GlobalObjectClassMethodExtractor", function() {
 `;
 
     it("should extract prototype class methods", function() {
-        const ast = esprima.parseScript(script, { comment: true, range: true, tokens: true });
+        const ast = esprima.parseScript(script, { comment: true, loc: true });
         const extractor = new extractors.GlobalObjectClassMethodExtractor();
 
         const results = extractor.extract(ast);
@@ -193,7 +203,7 @@ describe("GlobalObjectClassMethodExtractor", function() {
     });
 
     it("should extract static class methods", function() {
-        const ast = esprima.parseScript(script, { comment: true, range: true, tokens: true });
+        const ast = esprima.parseScript(script, { comment: true, loc: true });
         const extractor = new extractors.GlobalObjectClassMethodExtractor();
 
         const results = extractor.extract(ast);
@@ -216,7 +226,7 @@ describe("GlobalObjectClassMethodExtractor", function() {
             });
         `;
 
-        const ast = esprima.parseScript(script, { comment: true, range: true, tokens: true });
+        const ast = esprima.parseScript(script, { comment: true, loc: true });
         const extractor = new extractors.GlobalObjectClassMethodExtractor();
 
         const results = extractor.extract(ast);
@@ -234,7 +244,7 @@ describe("GlobalObjectClassMethodExtractor", function() {
             };
         `;
 
-        const ast = esprima.parseScript(script, { comment: true, range: true, tokens: true });
+        const ast = esprima.parseScript(script, { comment: true, loc: true });
         const extractor = new extractors.GlobalObjectClassMethodExtractor();
 
         const results = extractor.extract(ast);
@@ -251,7 +261,7 @@ describe("GlobalObjectClassMethodExtractor", function() {
             };
         `;
 
-        const ast = esprima.parseScript(script, { comment: true, range: true, tokens: true });
+        const ast = esprima.parseScript(script, { comment: true, loc: true });
         const extractor = new extractors.GlobalObjectClassMethodExtractor();
 
         const results = extractor.extract(ast);
@@ -271,7 +281,7 @@ describe("GlobalObjectClassPropertyExtractor", function() {
 `;
 
     it("should extract prototype class properties", function() {
-        const ast = esprima.parseScript(script, { comment: true, range: true, tokens: true });
+        const ast = esprima.parseScript(script, { comment: true, loc: true });
         const extractor = new extractors.GlobalObjectClassPropertyExtractor();
 
         const results = extractor.extract(ast);
@@ -283,7 +293,7 @@ describe("GlobalObjectClassPropertyExtractor", function() {
     });
 
     it("should extract static class properties", function() {
-        const ast = esprima.parseScript(script, { comment: true, range: true, tokens: true });
+        const ast = esprima.parseScript(script, { comment: true, loc: true });
         const extractor = new extractors.GlobalObjectClassPropertyExtractor();
 
         const results = extractor.extract(ast);
@@ -302,7 +312,7 @@ describe("GlobalObjectClassPropertyExtractor", function() {
             A.prototype.bleh = new Foo();
         `;
 
-        const ast = esprima.parseScript(script, { comment: true, range: true, tokens: true });
+        const ast = esprima.parseScript(script, { comment: true, loc: true });
         const extractor = new extractors.GlobalObjectClassPropertyExtractor();
 
         const results = extractor.extract(ast);
@@ -321,7 +331,7 @@ describe("GlobalObjectClassPropertyExtractor", function() {
             A.prototype.bleh = {};
         `;
 
-        const ast = esprima.parseScript(script, { comment: true, range: true, tokens: true });
+        const ast = esprima.parseScript(script, { comment: true, loc: true });
         const extractor = new extractors.GlobalObjectClassPropertyExtractor();
 
         const results = extractor.extract(ast);
@@ -340,7 +350,7 @@ describe("GlobalObjectClassPropertyExtractor", function() {
             A.prototype.bleh = [];
         `;
 
-        const ast = esprima.parseScript(script, { comment: true, range: true, tokens: true });
+        const ast = esprima.parseScript(script, { comment: true, loc: true });
         const extractor = new extractors.GlobalObjectClassPropertyExtractor();
 
         const results = extractor.extract(ast);
@@ -355,7 +365,7 @@ describe("GlobalObjectClassPropertyExtractor", function() {
         const script = `
             A.prototype.foo = null;
         `;
-        const ast = esprima.parseScript(script, { comment: true, range: true, tokens: true });
+        const ast = esprima.parseScript(script, { comment: true, loc: true });
         const extractor = new extractors.GlobalObjectClassPropertyExtractor();
 
         const results = extractor.extract(ast);
@@ -372,7 +382,7 @@ describe("GlobalObjectClassPropertyExtractor", function() {
             };
         `;
 
-        const ast = esprima.parseScript(script, { comment: true, range: true, tokens: true });
+        const ast = esprima.parseScript(script, { comment: true, loc: true });
         const extractor = new extractors.GlobalObjectClassPropertyExtractor();
 
         const results = extractor.extract(ast);
@@ -385,7 +395,7 @@ describe("GlobalObjectClassPropertyExtractor", function() {
             };
         `;
 
-        const ast = esprima.parseScript(script, { comment: true, range: true, tokens: true });
+        const ast = esprima.parseScript(script, { comment: true, loc: true });
         const extractor = new extractors.GlobalObjectClassPropertyExtractor();
 
         const results = extractor.extract(ast);
@@ -407,7 +417,7 @@ describe("ObjectDefinePropertyExtractor", function() {
             configurable: true
         });
         `;
-        const ast = esprima.parseScript(script, { comment: true, range: true, tokens: true });
+        const ast = esprima.parseScript(script, { comment: true, loc: true });
         const extractor = new extractors.ObjectDefinePropertyExtractor();
 
         const results = extractor.extract(ast);
@@ -429,7 +439,7 @@ describe("ObjectDefinePropertyExtractor", function() {
             configurable: true
         });
         `;
-        const ast = esprima.parseScript(script, { comment: true, range: true, tokens: true });
+        const ast = esprima.parseScript(script, { comment: true, loc: true });
         const extractor = new extractors.ObjectDefinePropertyExtractor();
 
         const results = extractor.extract(ast);
@@ -448,7 +458,7 @@ describe("ObjectDefinePropertiesExtractor", function() {
             y: { get: function() { return this._y; }, configurable: true }
         });
         `;
-        const ast = esprima.parseScript(script, { comment: true, range: true, tokens: true });
+        const ast = esprima.parseScript(script, { comment: true, loc: true });
         const extractor = new extractors.ObjectDefinePropertiesExtractor();
 
         const results = extractor.extract(ast);
@@ -467,7 +477,7 @@ describe("ObjectDefinePropertiesExtractor", function() {
             y: { get: function() { return this._y; }, configurable: true }
         });
         `;
-        const ast = esprima.parseScript(script, { comment: true, range: true, tokens: true });
+        const ast = esprima.parseScript(script, { comment: true, loc: true });
         const extractor = new extractors.ObjectDefinePropertiesExtractor();
 
         const results = extractor.extract(ast);

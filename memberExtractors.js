@@ -2,6 +2,29 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const esquery = require("esquery");
 class ExtractUtils {
+    static getComment(node, astComments) {
+        let getCommentsAtLine = line => {
+            let matchIndex = astComments.findIndex(comment => {
+                return comment.loc.end.line == line;
+            });
+            if (matchIndex > -1) {
+                return astComments[matchIndex].value.trim();
+            }
+            else {
+                return null;
+            }
+        };
+        let resultArray = [];
+        let curResult = getCommentsAtLine(node.loc.start.line - 1);
+        if (curResult == null) {
+            // check the line above
+            curResult = getCommentsAtLine(node.loc.start.line - 2);
+        }
+        if (curResult) {
+            resultArray.push(curResult);
+        }
+        return resultArray.length ? resultArray.join("\n") : null;
+    }
     static getValueTypeFromNode(node) {
         let valueType = esquery(node, "NewExpression > Identifier");
         if (valueType.length) {
@@ -45,6 +68,7 @@ class GlobalObjectClassMethodExtractor {
             }
             let params = node.right.params;
             func.parameters = params.map(p => p.name);
+            func.comment = ExtractUtils.getComment(node, ast.comments);
             results.push(func);
         });
         return results;
@@ -66,6 +90,7 @@ class GlobalVariableExtractor {
                     valueType: null
                 };
                 variable.valueType = ExtractUtils.getValueTypeFromNode(d);
+                variable.comment = ExtractUtils.getComment(node, ast.comments);
                 results.push(variable);
                 //console.log(variable);
             });
@@ -123,6 +148,7 @@ class GlobalFunctionExtractor {
                 func.namespace = func.name;
                 func.name = "constructor";
             }
+            func.comment = ExtractUtils.getComment(node, ast.comments);
             results.push(func);
         });
         return results;
@@ -151,6 +177,7 @@ class GlobalObjectClassPropertyExtractor {
                     member.type = "StaticProperty";
                 }
                 member.valueType = ExtractUtils.getValueTypeFromNode(node);
+                member.comment = ExtractUtils.getComment(node, ast.comments);
                 //console.log(member);
                 results.push(member);
             }

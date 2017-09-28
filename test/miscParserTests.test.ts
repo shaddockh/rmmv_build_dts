@@ -3,7 +3,7 @@ import * as esprima from "esprima";
 import * as esquery from "esquery";
 
 describe("Parser Tests", function() {
-    it("should parse comments", function() {
+    it.skip("should parse comments", function() {
         const script = `
             /** function declaration */
             function C() {}

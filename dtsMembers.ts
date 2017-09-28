@@ -1,3 +1,16 @@
+class RenderUtils {
+    static formatComment(indent: string, commentBlock: string): string {
+        let splits = commentBlock.split("\n");
+        if (splits.length == 1) {
+            return indent + "/* " + splits[0] + " */";
+        } else {
+            splits[0] = "/*" + splits[0];
+            splits.push("*/");
+
+            return splits.map(s => indent + s).join("\n");
+        }
+    }
+}
 export class NamespaceDeclaration {
     extendsObject: any;
     comment: string;
@@ -54,7 +67,7 @@ export class NamespaceDeclaration {
         let output = [];
 
         if (this.comment) {
-            output.push(this.comment);
+            output.push(RenderUtils.formatComment("", this.comment));
         }
 
         if (!this.isGlobal) {
@@ -102,7 +115,7 @@ export class NamespaceMember {
         let output = [];
         if (this.comment) {
             output.push("");
-            output.push(this.comment);
+            output.push(RenderUtils.formatComment(indent, this.comment));
         }
 
         let memberLine = "";

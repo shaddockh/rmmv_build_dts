@@ -6,6 +6,33 @@ export interface Extractor {
 }
 
 class ExtractUtils {
+    static getComment(node: any, astComments: any[]): string {
+        let getCommentsAtLine = line => {
+            let matchIndex = astComments.findIndex(comment => {
+                return comment.loc.end.line == line;
+            });
+
+            if (matchIndex > -1) {
+                return astComments[matchIndex].value.trim();
+            } else {
+                return null;
+            }
+        };
+
+        let resultArray = [];
+        let curResult = getCommentsAtLine(node.loc.start.line - 1);
+
+        if (curResult == null) {
+            // check the line above
+            curResult = getCommentsAtLine(node.loc.start.line - 2);
+        }
+        if (curResult) {
+            resultArray.push(curResult);
+        }
+
+        return resultArray.length ? resultArray.join("\n") : null;
+    }
+
     static getValueTypeFromNode(node) {
         let valueType = esquery(node, "NewExpression > Identifier");
         if (valueType.length) {
@@ -56,6 +83,7 @@ export class GlobalObjectClassMethodExtractor implements Extractor {
 
             let params = node.right.params;
             func.parameters = params.map(p => p.name);
+            func.comment = ExtractUtils.getComment(node, ast.comments);
             results.push(func);
         });
         return results;
@@ -79,6 +107,7 @@ export class GlobalVariableExtractor implements Extractor {
                 };
 
                 variable.valueType = ExtractUtils.getValueTypeFromNode(d);
+                variable.comment = ExtractUtils.getComment(node, ast.comments);
 
                 results.push(variable);
                 //console.log(variable);
@@ -153,6 +182,7 @@ export class GlobalFunctionExtractor implements Extractor {
                 func.name = "constructor";
             }
 
+            func.comment = ExtractUtils.getComment(node, ast.comments);
             results.push(func);
         });
         return results;
@@ -187,6 +217,7 @@ export class GlobalObjectClassPropertyExtractor implements Extractor {
                 }
 
                 member.valueType = ExtractUtils.getValueTypeFromNode(node);
+                member.comment = ExtractUtils.getComment(node, ast.comments);
                 //console.log(member);
                 results.push(member);
             }

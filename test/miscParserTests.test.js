@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const esprima = require("esprima");
 describe("Parser Tests", function () {
-    it("should parse comments", function () {
+    it.skip("should parse comments", function () {
         const script = `
             /** function declaration */
             function C() {}

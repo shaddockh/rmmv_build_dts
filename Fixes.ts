@@ -8,7 +8,8 @@ export const enum FixAction {
     RenameMember = "rename-member",
     StaticClass = "static-class",
     StaticMethod = "static-method",
-    SetMemberType = "set-member-type"
+    SetMemberType = "set-member-type",
+    ApplyConstructorCommentToClass = "apply-constructor-comment-to-class"
 }
 
 export interface Fix {
@@ -60,7 +61,7 @@ export class FixHandler {
         }
     }
 
-    private applyMemberFixes(fix: Fix, member: NamespaceMember): any {
+    private applyMemberFixes(fix: Fix, member: NamespaceMember, decl: NamespaceDeclaration): any {
         switch (fix.action) {
             case FixAction.CommentOut:
                 console.log("Commenting out member: " + member.name);
@@ -122,6 +123,12 @@ export class FixHandler {
                 member.comment = this.getFixComment(member.comment, fix.comment);
                 member.type = fix.type;
                 break;
+
+            case FixAction.ApplyConstructorCommentToClass:
+                console.log("Moving constructor comment to class: " + decl.name);
+                decl.comment = member.comment;
+                member.comment = null;
+                break;
         }
     }
 
@@ -137,7 +144,7 @@ export class FixHandler {
             if (fix.memberName) {
                 decl.members.forEach(member => {
                     if (fix.memberName == "*" || member.name == fix.memberName) {
-                        this.applyMemberFixes(fix, member);
+                        this.applyMemberFixes(fix, member, decl);
                     }
                 });
             } else {

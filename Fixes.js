@@ -33,7 +33,7 @@ class FixHandler {
                 break;
         }
     }
-    applyMemberFixes(fix, member) {
+    applyMemberFixes(fix, member, decl) {
         switch (fix.action) {
             case "comment-out" /* CommentOut */:
                 console.log("Commenting out member: " + member.name);
@@ -86,6 +86,11 @@ class FixHandler {
                 member.comment = this.getFixComment(member.comment, fix.comment);
                 member.type = fix.type;
                 break;
+            case "apply-constructor-comment-to-class" /* ApplyConstructorCommentToClass */:
+                console.log("Moving constructor comment to class: " + decl.name);
+                decl.comment = member.comment;
+                member.comment = null;
+                break;
         }
     }
     loadFixes(jsonFilename) {
@@ -99,7 +104,7 @@ class FixHandler {
             if (fix.memberName) {
                 decl.members.forEach(member => {
                     if (fix.memberName == "*" || member.name == fix.memberName) {
-                        this.applyMemberFixes(fix, member);
+                        this.applyMemberFixes(fix, member, decl);
                     }
                 });
             }
