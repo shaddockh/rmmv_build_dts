@@ -7,17 +7,14 @@
         "test": "mocha -r ts-node/register **/*.test.ts"
     },
     "author": "",
-    "license": "ISC",
+    "license": "MIT",
     "devDependencies": {
         "@types/chai": "^4.0.4",
         "@types/esprima": "^4.0.1",
         "@types/estraverse": "0.0.6",
         "@types/mocha": "^2.2.43",
         "@types/node": "^8.0.28",
-        "@types/pixi.js": "^4.5.3",
-        "esquery": "git+https://github.com/estools/esquery.git",
-        "estraverse": "^4.2.0",
-        "function-extractor": "0.0.5"
+        "esquery": "git+https://github.com/estools/esquery.git"
     },
     "dependencies": {}
 }

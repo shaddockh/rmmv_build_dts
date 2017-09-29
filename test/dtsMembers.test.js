@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const chai_1 = require("chai");
-const dtsMembers_1 = require("../dtsMembers");
+const dtsMembers_1 = require("../src/dtsMembers");
 describe("DtsMemberFactory", function () {
     it("should generate a static method from MemberType", function () {
         const mt = {

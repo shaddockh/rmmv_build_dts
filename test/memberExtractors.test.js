@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const chai_1 = require("chai");
 const esprima = require("esprima");
-const extractors = require("./../memberExtractors");
+const extractors = require("./../src/memberExtractors");
 const bigScript = `
 /* my variable */
 var myglobal = true;

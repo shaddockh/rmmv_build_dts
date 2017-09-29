@@ -82,9 +82,8 @@ class NamespaceDeclaration {
             }
         });
         if (!this.isGlobal) {
-            output.push("}\n");
+            output.push("}");
         }
-        output.push("\n");
         return output.join("\n");
     }
 }

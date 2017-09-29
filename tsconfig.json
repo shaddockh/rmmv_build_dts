@@ -3,7 +3,7 @@
         "module": "commonjs",
         "target": "es2015"
     },
-    "exclude": ["node_modules", "js", "generated"],
+    "exclude": ["node_modules", "dist"],
     "typeAcquisition": {
         "enable": true
     }

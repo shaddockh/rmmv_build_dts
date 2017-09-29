@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import ScriptAnalyzer from "../ScriptAnalyzer";
+import ScriptAnalyzer from "../src/ScriptAnalyzer";
 
 describe("ScriptAnalyzer", function() {
     it("should instantiate", function() {

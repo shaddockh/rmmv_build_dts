@@ -184,6 +184,78 @@
         "type": "ItemData[]"
     },
     {
+        "className": "global",
+        "memberName": "$dataAnimations",
+        "action": "set-member-type",
+        "type": "AnimationData[]"
+    },
+    {
+        "className": "global",
+        "memberName": "$dataArmors",
+        "action": "set-member-type",
+        "type": "ArmorData[]"
+    },
+    {
+        "className": "global",
+        "memberName": "$dataClasses",
+        "action": "set-member-type",
+        "type": "ClassData[]"
+    },
+    {
+        "className": "global",
+        "memberName": "$dataCommonEvents",
+        "action": "set-member-type",
+        "type": "CommonEventData[]"
+    },
+    {
+        "className": "global",
+        "memberName": "$dataEnemies",
+        "action": "set-member-type",
+        "type": "EnemyData[]"
+    },
+    {
+        "className": "global",
+        "memberName": "$dataSkills",
+        "action": "set-member-type",
+        "type": "SkillData[]"
+    },
+    {
+        "className": "global",
+        "memberName": "$dataStates",
+        "action": "set-member-type",
+        "type": "StateData[]"
+    },
+    {
+        "className": "global",
+        "memberName": "$dataSystem",
+        "action": "set-member-type",
+        "type": "SystemData"
+    },
+    {
+        "className": "global",
+        "memberName": "$dataTroops",
+        "action": "set-member-type",
+        "type": "TroopData[]"
+    },
+    {
+        "className": "global",
+        "memberName": "$dataMapInfos",
+        "action": "set-member-type",
+        "type": "MapInfoData[]"
+    },
+    {
+        "className": "global",
+        "memberName": "$dataMap",
+        "action": "set-member-type",
+        "type": "MapData"
+    },
+    {
+        "className": "global",
+        "memberName": "$dataTilesets",
+        "action": "set-member-type",
+        "type": "TilesetData[]"
+    },
+    {
         "className": "*",
         "memberName": "constructor",
         "action": "apply-constructor-comment-to-class"

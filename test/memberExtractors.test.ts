@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import * as esprima from "esprima";
-import * as extractors from "./../memberExtractors";
-import * as esquery from "esquery";
+
+import * as extractors from "./../src/memberExtractors";
 
 const bigScript = `
 /* my variable */

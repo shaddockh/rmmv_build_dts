@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const chai_1 = require("chai");
-const ScriptAnalyzer_1 = require("../ScriptAnalyzer");
+const ScriptAnalyzer_1 = require("../src/ScriptAnalyzer");
 describe("ScriptAnalyzer", function () {
     it("should instantiate", function () {
         new ScriptAnalyzer_1.default("var x = 23;");

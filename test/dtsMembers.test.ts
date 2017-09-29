@@ -1,6 +1,6 @@
 import { expect } from "chai";
-import * as memberExtractors from "../memberExtractors";
-import { DtsMemberFactory, NamespaceDeclaration } from "../dtsMembers";
+
+import { DtsMemberFactory, NamespaceDeclaration } from "../src/dtsMembers";
 
 describe("DtsMemberFactory", function() {
     it("should generate a static method from MemberType", function() {

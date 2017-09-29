@@ -1,11 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const DtsGenerator_1 = require("./DtsGenerator");
-const ScriptAnalyzer_1 = require("./ScriptAnalyzer");
 const fs = require("fs");
-// import * as functionExtractor from "function-extractor";
 const readline = require("readline");
-const Fixes_1 = require("./Fixes");
+const DtsGenerator_1 = require("./src/DtsGenerator");
+const Fixes_1 = require("./src/Fixes");
+const ScriptAnalyzer_1 = require("./src/ScriptAnalyzer");
 function loadSourceFile(currentFilename) {
     return new Promise((resolve, failure) => {
         let lines = [];
@@ -24,7 +23,7 @@ function loadSourceFile(currentFilename) {
         });
     });
 }
-function loadAndExtractNew(currentFilename) {
+function loadAndExtract(currentFilename) {
     console.log("Processing File: " + currentFilename);
     const source = fs.readFileSync(currentFilename, "utf8");
     const analyzer = ScriptAnalyzer_1.default.Default(source);
@@ -32,7 +31,7 @@ function loadAndExtractNew(currentFilename) {
     const fixer = new Fixes_1.FixHandler();
     fixer.loadFixes("./PostScanFixes.json");
     const dtsGenerator = new DtsGenerator_1.default(analyzer, fixer);
-    const outName = "generated2/" +
+    const outName = "dist/" +
         currentFilename
             .split("/")
             .pop()
@@ -41,9 +40,9 @@ function loadAndExtractNew(currentFilename) {
 }
 let base = "./v1.4.2_c";
 base = "./v1.5.1";
-loadAndExtractNew(base + "/rpg_core.js");
-loadAndExtractNew(base + "/rpg_managers.js");
-loadAndExtractNew(base + "/rpg_objects.js");
-loadAndExtractNew(base + "/rpg_scenes.js");
-loadAndExtractNew(base + "/rpg_sprites.js");
-loadAndExtractNew(base + "/rpg_windows.js");
+loadAndExtract(base + "/rpg_core.js");
+loadAndExtract(base + "/rpg_managers.js");
+loadAndExtract(base + "/rpg_objects.js");
+loadAndExtract(base + "/rpg_scenes.js");
+loadAndExtract(base + "/rpg_sprites.js");
+loadAndExtract(base + "/rpg_windows.js");
