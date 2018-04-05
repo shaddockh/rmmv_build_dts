@@ -3,14 +3,14 @@
 
 /* The window for selecting an item to sell on the shop screen. */
 declare class Window_ShopSell extends Window_ItemList {
-    constructor(x, y, width, height);
+    constructor(x?, y?, width?, height?);
     initialize(x?, y?, width?, height?);
     isEnabled(item);
 }
 
 /* The superclass of all windows within the game. */
 declare class Window_Base extends Window {
-    constructor(x, y, width, height);
+    constructor(x?, y?, width?, height?);
     static _faceHeight: number;
     static _faceWidth: number;
     static _iconHeight: number;
@@ -116,7 +116,7 @@ declare class Window_Base extends Window {
 
 /* The superclass of windows for selecting a command. */
 declare class Window_Command extends Window_Selectable {
-    constructor(x, y);
+    constructor(x?, y?);
     addCommand(name, symbol, enabled, ext);
     callOkHandler();
     clearCommandList();
@@ -145,7 +145,7 @@ declare class Window_Command extends Window_Selectable {
 
 /* The command window for the horizontal selection format. */
 declare class Window_HorzCommand extends Window_Command {
-    constructor(x, y);
+    constructor(x?, y?);
     initialize(x?, y?);
     itemTextAlign();
     maxCols();
@@ -154,7 +154,7 @@ declare class Window_HorzCommand extends Window_Command {
 
 /* The window for displaying the description of the selected item. */
 declare class Window_Help extends Window_Base {
-    constructor(numLines);
+    constructor(numLines?);
     clear();
     initialize(numLines?);
     refresh();
@@ -164,7 +164,7 @@ declare class Window_Help extends Window_Base {
 
 /* The window for displaying the party's gold. */
 declare class Window_Gold extends Window_Base {
-    constructor(x, y);
+    constructor(x?, y?);
     currencyUnit();
     initialize(x?, y?);
     open();
@@ -176,7 +176,7 @@ declare class Window_Gold extends Window_Base {
 
 /* The window for selecting a command on the menu screen. */
 declare class Window_MenuCommand extends Window_Command {
-    constructor(x, y);
+    constructor(x?, y?);
     static _lastCommandSymbol;
     static initCommandPosition();
     addFormationCommand();
@@ -201,7 +201,7 @@ declare class Window_MenuCommand extends Window_Command {
 
 /* The window for displaying party member status on the menu screen. */
 declare class Window_MenuStatus extends Window_Selectable {
-    constructor(x, y);
+    constructor(x?, y?);
     drawItem(index);
     drawItemBackground(index);
     drawItemImage(index);
@@ -244,7 +244,7 @@ declare class Window_ItemCategory extends Window_HorzCommand {
 
 /* The window for selecting an item on the item screen. */
 declare class Window_ItemList extends Window_Selectable {
-    constructor(x, y, width, height);
+    constructor(x?, y?, width?, height?);
     drawItem(index);
     drawItemNumber(item, x, y, width);
     includes(item);
@@ -266,7 +266,7 @@ declare class Window_ItemList extends Window_Selectable {
 
 /* The window for selecting a skill type on the skill screen. */
 declare class Window_SkillType extends Window_Command {
-    constructor(x, y);
+    constructor(x?, y?);
     initialize(x?, y?);
     makeCommandList();
     numVisibleRows();
@@ -279,7 +279,7 @@ declare class Window_SkillType extends Window_Command {
 
 /* The window for displaying the skill user's status on the skill screen. */
 declare class Window_SkillStatus extends Window_Base {
-    constructor(x, y, width, height);
+    constructor(x?, y?, width?, height?);
     initialize(x?, y?, width?, height?);
     refresh();
     setActor(actor);
@@ -287,7 +287,7 @@ declare class Window_SkillStatus extends Window_Base {
 
 /* The window for selecting a skill on the skill screen. */
 declare class Window_SkillList extends Window_Selectable {
-    constructor(x, y, width, height);
+    constructor(x?, y?, width?, height?);
     costWidth();
     drawItem(index);
     drawSkillCost(skill, x, y, width);
@@ -309,7 +309,7 @@ declare class Window_SkillList extends Window_Selectable {
 
 /* The window for displaying parameter changes on the equipment screen. */
 declare class Window_EquipStatus extends Window_Base {
-    constructor(x, y);
+    constructor(x?, y?);
     drawCurrentParam(x, y, paramId);
     drawItem(x, y, paramId);
     drawNewParam(x, y, paramId);
@@ -326,7 +326,7 @@ declare class Window_EquipStatus extends Window_Base {
 
 /* The window for selecting a command on the equipment screen. */
 declare class Window_EquipCommand extends Window_HorzCommand {
-    constructor(x, y, width);
+    constructor(x?, y?, width?);
     initialize(x?, y?, width?);
     makeCommandList();
     maxCols();
@@ -335,7 +335,7 @@ declare class Window_EquipCommand extends Window_HorzCommand {
 
 /* The window for selecting an equipment slot on the equipment screen. */
 declare class Window_EquipSlot extends Window_Selectable {
-    constructor(x, y, width, height);
+    constructor(x?, y?, width?, height?);
     drawItem(index);
     initialize(x?, y?, width?, height?);
     isCurrentItemEnabled();
@@ -352,7 +352,7 @@ declare class Window_EquipSlot extends Window_Selectable {
 
 /* The window for selecting an equipment item on the equipment screen. */
 declare class Window_EquipItem extends Window_ItemList {
-    constructor(x, y, width, height);
+    constructor(x?, y?, width?, height?);
     includes(item);
     initialize(x?, y?, width?, height?);
     isEnabled(item);
@@ -411,7 +411,7 @@ declare class Window_Options extends Window_Command {
 
 /* The window for selecting a save file on the save and load screens. */
 declare class Window_SavefileList extends Window_Selectable {
-    constructor(x, y, width, height);
+    constructor(x?, y?, width?, height?);
     drawContents(info, rect, valid);
     drawFileId(id, x, y);
     drawGameTitle(info, x, y, width);
@@ -428,7 +428,7 @@ declare class Window_SavefileList extends Window_Selectable {
 
 /* The window for selecting buy/sell on the shop screen. */
 declare class Window_ShopCommand extends Window_HorzCommand {
-    constructor(width, purchaseOnly);
+    constructor(width?, purchaseOnly?);
     initialize(width?, purchaseOnly?);
     makeCommandList();
     maxCols();
@@ -437,7 +437,7 @@ declare class Window_ShopCommand extends Window_HorzCommand {
 
 /* The window for selecting an item to buy on the shop screen. */
 declare class Window_ShopBuy extends Window_Selectable {
-    constructor(x, y, height, shopGoods);
+    constructor(x?, y?, height?, shopGoods?);
     drawItem(index);
     initialize(x?, y?, height?, shopGoods?);
     isCurrentItemEnabled();
@@ -455,7 +455,7 @@ declare class Window_ShopBuy extends Window_Selectable {
 
 /* The window class with cursor movement and scroll functions. */
 declare class Window_Selectable extends Window_Base {
-    constructor(x, y, width, height);
+    constructor(x?, y?, width?, height?);
     activate();
     bottomRow();
     callCancelHandler();
@@ -543,7 +543,7 @@ declare class Window_Selectable extends Window_Base {
 
 /* screen. */
 declare class Window_ShopNumber extends Window_Selectable {
-    constructor(x, y, height);
+    constructor(x?, y?, height?);
     buttonY();
     changeNumber(amount);
     createButtons();
@@ -579,7 +579,7 @@ declare class Window_ShopNumber extends Window_Selectable {
 
 /* equipment on the shop screen. */
 declare class Window_ShopStatus extends Window_Base {
-    constructor(x, y, width, height);
+    constructor(x?, y?, width?, height?);
     changePage();
     currentEquippedItem(actor, etypeId);
     drawActorEquipInfo(x, y, actor);
@@ -603,7 +603,7 @@ declare class Window_ShopStatus extends Window_Base {
 
 /* The window for editing an actor's name on the name input screen. */
 declare class Window_NameEdit extends Window_Base {
-    constructor(actor, maxLength);
+    constructor(actor?, maxLength?);
 
     /* null//FIXME: name is a function here, but variable in parent class */
     //name();
@@ -626,7 +626,7 @@ declare class Window_NameEdit extends Window_Base {
 
 /* The window for selecting text characters on the name input screen. */
 declare class Window_NameInput extends Window_Selectable {
-    constructor(editWindow);
+    constructor(editWindow?);
     static JAPAN1: string;
     static JAPAN2: string;
     static JAPAN3: string;
@@ -664,7 +664,7 @@ declare class Window_NameInput extends Window_Selectable {
 
 /* The window used for the event command [Show Choices]. */
 declare class Window_ChoiceList extends Window_Command {
-    constructor(messageWindow);
+    constructor(messageWindow?);
     callCancelHandler();
     callOkHandler();
     contentsHeight();
@@ -685,7 +685,7 @@ declare class Window_ChoiceList extends Window_Command {
 
 /* The window used for the event command [Input Number]. */
 declare class Window_NumberInput extends Window_Selectable {
-    constructor(messageWindow);
+    constructor(messageWindow?);
     buttonY();
     changeDigit(up);
     createButtons();
@@ -717,7 +717,7 @@ declare class Window_NumberInput extends Window_Selectable {
 
 /* The window used for the event command [Select Item]. */
 declare class Window_EventItem extends Window_ItemList {
-    constructor(messageWindow);
+    constructor(messageWindow?);
     includes(item);
     initialize(messageWindow?);
     isEnabled(item);
@@ -933,7 +933,7 @@ declare class Window_BattleStatus extends Window_Selectable {
 
 /* The window for selecting a target actor on the battle screen. */
 declare class Window_BattleActor extends Window_BattleStatus {
-    constructor(x, y);
+    constructor(x?, y?);
     actor();
     hide();
     initialize(x?, y?);
@@ -943,7 +943,7 @@ declare class Window_BattleActor extends Window_BattleStatus {
 
 /* The window for selecting a target enemy on the battle screen. */
 declare class Window_BattleEnemy extends Window_Selectable {
-    constructor(x, y);
+    constructor(x?, y?);
     drawItem(index);
     enemy();
     enemyIndex();
@@ -961,7 +961,7 @@ declare class Window_BattleEnemy extends Window_Selectable {
 
 /* The window for selecting a skill to use on the battle screen. */
 declare class Window_BattleSkill extends Window_SkillList {
-    constructor(x, y, width, height);
+    constructor(x?, y?, width?, height?);
     hide();
     initialize(x?, y?, width?, height?);
     show();
@@ -969,7 +969,7 @@ declare class Window_BattleSkill extends Window_SkillList {
 
 /* The window for selecting an item to use on the battle screen. */
 declare class Window_BattleItem extends Window_ItemList {
-    constructor(x, y, width, height);
+    constructor(x?, y?, width?, height?);
     hide();
     includes(item);
     initialize(x?, y?, width?, height?);
@@ -1001,7 +1001,7 @@ declare class Window_GameEnd extends Window_Command {
 
 /* The window for selecting a block of switches/variables on the debug screen. */
 declare class Window_DebugRange extends Window_Selectable {
-    constructor(x, y);
+    constructor(x?, y?);
     static lastIndex: number;
     static lastTopRow: number;
     drawItem(index);
@@ -1020,7 +1020,7 @@ declare class Window_DebugRange extends Window_Selectable {
 
 /* The window for displaying switches and variables on the debug screen. */
 declare class Window_DebugEdit extends Window_Selectable {
-    constructor(x, y, width);
+    constructor(x?, y?, width?);
     currentId();
     drawItem(index);
     initialize(x?, y?, width?);

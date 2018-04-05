@@ -29,7 +29,7 @@ declare class Sprite_Base extends Sprite {
 
 /* The sprite for displaying a character. */
 declare class Sprite_Character extends Sprite_Base {
-    constructor(character);
+    constructor(character?);
     characterBlockX();
     characterBlockY();
     characterPatternX();
@@ -65,7 +65,7 @@ declare class Sprite_Character extends Sprite_Base {
 
 /* The superclass of Sprite_Actor and Sprite_Enemy. */
 declare class Sprite_Battler extends Sprite_Base {
-    constructor(battler);
+    constructor(battler?);
     damageOffsetX();
     damageOffsetY();
     inHomePosition();
@@ -93,7 +93,7 @@ declare class Sprite_Battler extends Sprite_Base {
 
 /* The sprite for displaying an actor. */
 declare class Sprite_Actor extends Sprite_Battler {
-    constructor(battler);
+    constructor(battler?);
     static MOTIONS: number;
     createMainSprite();
     createShadowSprite();
@@ -129,7 +129,7 @@ declare class Sprite_Actor extends Sprite_Battler {
 
 /* The sprite for displaying an enemy. */
 declare class Sprite_Enemy extends Sprite_Battler {
-    constructor(battler);
+    constructor(battler?);
     createStateIconSprite();
     damageOffsetX();
     damageOffsetY();
@@ -280,7 +280,7 @@ declare class Sprite_Balloon extends Sprite_Base {
 
 /* The sprite for displaying a picture. */
 declare class Sprite_Picture extends Sprite {
-    constructor(pictureId);
+    constructor(pictureId?);
     initialize(pictureId?);
     loadBitmap();
     picture();

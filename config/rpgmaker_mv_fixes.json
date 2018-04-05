@@ -7,13 +7,13 @@
     {
         "className": "*",
         "memberName": "initialize",
-        "action": "copy-params-to-constructor"
+        "action": "set-optional-param",
+        "paramName": "*"
     },
     {
         "className": "*",
         "memberName": "initialize",
-        "action": "set-optional-param",
-        "paramName": "*"
+        "action": "copy-params-to-constructor"
     },
     {
         "className": "Array",

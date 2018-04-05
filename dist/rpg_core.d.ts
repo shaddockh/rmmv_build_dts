@@ -361,7 +361,7 @@ declare class RequestQueue {
  * @param {Number} y The y coordinate
 */
 declare class Point extends PIXI.Point {
-    constructor(x, y);
+    constructor(x?, y?);
     initialize(x?, y?);
 }
 
@@ -376,7 +376,7 @@ declare class Point extends PIXI.Point {
  * @param {Number} height The height of the rectangle
 */
 declare class Rectangle extends PIXI.Rectangle {
-    constructor(x, y, width, height);
+    constructor(x?, y?, width?, height?);
 
     /**
      * @static
@@ -397,7 +397,7 @@ declare class Rectangle extends PIXI.Rectangle {
  * @param {Number} height The height of the bitmap
 */
 declare class Bitmap {
-    constructor(width, height);
+    constructor(width?, height?);
 
     /* for iOS. img consumes memory. so reuse it. */
     static _reuseImages: any[];
@@ -709,7 +709,7 @@ declare class Bitmap {
  * @class Graphics
 */
 declare class Graphics {
-    constructor(width, height, type);
+    constructor(width?, height?, type?);
     static _fontLoaded;
     static _videoVolume: number;
 
@@ -1806,7 +1806,7 @@ declare class TouchInput {
  * @param {Bitmap} bitmap The image for the sprite
 */
 declare class Sprite extends PIXI.Sprite {
-    constructor(bitmap);
+    constructor(bitmap?);
 
     /* Number of the created objects. */
     static _counter: number;
@@ -2234,7 +2234,7 @@ declare interface String {
  * @param {Bitmap} bitmap The image for the tiling sprite
 */
 declare class TilingSprite extends PIXI.extras.PictureTilingSprite {
-    constructor(bitmap);
+    constructor(bitmap?);
     bitmap;
     opacity;
 
@@ -2765,7 +2765,7 @@ declare class Stage extends PIXI.Container {
  * @param {String} url The url of the audio file
 */
 declare class WebAudio {
-    constructor(noAudio);
+    constructor(noAudio?);
     static _context;
     static _initialized: boolean;
     static _masterGainNode;
