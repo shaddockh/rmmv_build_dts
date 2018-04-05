@@ -31,6 +31,11 @@ class FixHandler {
                 decl.members.forEach(member => (member.isStatic = true));
                 decl.comment = this.getFixComment(decl.comment, fix.comment);
                 break;
+            case "rename" /* Rename */:
+                console.log("Renaming: " + decl.name + " to " + fix.replacementName);
+                decl.name = fix.replacementName;
+                decl.comment = this.getFixComment(decl.comment, fix.comment);
+                break;
         }
     }
     applyMemberFixes(fix, member, decl) {
@@ -56,7 +61,7 @@ class FixHandler {
                     }
                 }
                 break;
-            case "rename-member" /* RenameMember */:
+            case "rename" /* Rename */:
                 console.log("Renaming member: " + member.name + " to " + fix.replacementName);
                 member.name = fix.replacementName;
                 member.comment = this.getFixComment(member.comment, fix.comment);
@@ -104,6 +109,20 @@ class FixHandler {
     }
     loadFixes(jsonFilename) {
         this.fixes = require(jsonFilename);
+        // Now scan through and expand the batches if we have any
+        let batches = this.fixes.filter(f => (f.batch ? true : false));
+        // Remove the batches from the fix list
+        this.fixes = this.fixes.filter(f => (f.batch ? false : true));
+        batches.forEach(b => {
+            b.batch.forEach(e => {
+                const newFix = Object.assign({}, b);
+                delete newFix.batch;
+                for (let prop in e) {
+                    newFix[prop] = e[prop];
+                }
+                this.fixes.push(newFix);
+            });
+        });
     }
     applyFixes(decl) {
         this.fixes.forEach(fix => {

@@ -5,7 +5,7 @@ export const enum FixAction {
     SetOptionalParam = "set-optional-param",
     SetParamType = "set-param-type",
     ConvertToInterface = "convert-to-interface",
-    RenameMember = "rename-member",
+    Rename = "rename",
     StaticClass = "static-class",
     StaticMethod = "static-method",
     SetMemberType = "set-member-type",
@@ -21,6 +21,8 @@ export interface Fix {
     paramName?: string;
     type?: string;
     replacementName?: string;
+
+    batch?: any[];
 }
 
 export class FixHandler {
@@ -59,6 +61,12 @@ export class FixHandler {
                 decl.members.forEach(member => (member.isStatic = true));
                 decl.comment = this.getFixComment(decl.comment, fix.comment);
                 break;
+
+            case FixAction.Rename:
+                console.log("Renaming: " + decl.name + " to " + fix.replacementName);
+                decl.name = fix.replacementName;
+                decl.comment = this.getFixComment(decl.comment, fix.comment);
+                break;
         }
     }
 
@@ -89,7 +97,7 @@ export class FixHandler {
                 }
                 break;
 
-            case FixAction.RenameMember:
+            case FixAction.Rename:
                 console.log("Renaming member: " + member.name + " to " + fix.replacementName);
                 member.name = fix.replacementName;
                 member.comment = this.getFixComment(member.comment, fix.comment);
@@ -145,7 +153,27 @@ export class FixHandler {
 
     loadFixes(jsonFilename: string) {
         this.fixes = require(jsonFilename);
+
+        // Now scan through and expand the batches if we have any
+        let batches = this.fixes.filter(f => (f.batch ? true : false));
+
+        // Remove the batches from the fix list
+        this.fixes = this.fixes.filter(f => (f.batch ? false : true));
+
+        batches.forEach(b => {
+            b.batch.forEach(e => {
+                const newFix = Object.assign({}, b);
+                delete newFix.batch;
+
+                for (let prop in e) {
+                    newFix[prop] = e[prop];
+                }
+
+                this.fixes.push(newFix);
+            });
+        });
     }
+
     applyFixes(decl: NamespaceDeclaration) {
         this.fixes.forEach(fix => {
             if (decl.name != fix.className && fix.className != "*") {

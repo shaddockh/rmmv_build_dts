@@ -1,0 +1,121 @@
+[
+    {
+        "className": "*",
+        "memberName": "constructor",
+        "action": "apply-constructor-comment-to-class"
+    },
+    {
+        "className": "*",
+        "memberName": "initialize",
+        "action": "copy-params-to-constructor"
+    },
+    {
+        "className": "*",
+        "memberName": "initialize",
+        "action": "set-optional-param",
+        "paramName": "*"
+    },
+    {
+        "className": "Array",
+        "action": "rename",
+        "replacementName": "Array<T>"
+    },
+    {
+        "action": "convert-to-interface",
+        "batch": [
+            { "className": "String" },
+            { "className": "Number" },
+            { "className": "Math" },
+            { "className": "Window" },
+            { "className": "window" },
+            { "className": "Array" },
+            { "className": "Array<T>" }
+        ]
+    },
+    {
+        "className": "Window_NameEdit",
+        "memberName": "name",
+        "comment": "FIXME: name is a function here, but variable in parent class",
+        "action": "comment-out"
+    },
+    {
+        "className": "Game_Player",
+        "memberName": "update",
+        "comment":
+            "FIXME: update overloads parent update with a parameter, but parent doesn't have it",
+        "action": "set-optional-param",
+        "paramName": "sceneActive"
+    },
+    {
+        "className": "ImageManager",
+        "memberName": "*",
+        "action": "set-optional-param",
+        "paramName": "hue"
+    },
+    {
+        "className": "Window_Base",
+        "action": "set-optional-param",
+        "batch": [
+            { "memberName": "drawText", "paramName": "maxWidth" },
+            { "memberName": "drawItemName", "paramName": "width" }
+        ]
+    },
+    {
+        "className": "AudioManager",
+        "memberName": "*",
+        "action": "set-optional-param",
+        "paramName": "pos"
+    },
+    {
+        "className": "AudioManager",
+        "memberName": "*",
+        "action": "set-param-type",
+        "batch": [
+            { "paramName": "bgm", "type": "AudioDefinition" },
+            { "paramName": "bgs", "type": "AudioDefinition" },
+            { "paramName": "me", "type": "AudioDefinition" }
+        ]
+    },
+    {
+        "className": "global",
+        "action": "set-member-type",
+        "batch": [
+            { "memberName": "$gameTemp", "type": "Game_Temp" },
+            { "memberName": "$gameSystem", "type": "Game_System" },
+            { "memberName": "$gameScreen", "type": "Game_Screen" },
+            { "memberName": "$gameTimer", "type": "Game_Timer" },
+            { "memberName": "$gameMessage", "type": "Game_Message" },
+            { "memberName": "$gameSwitches", "type": "Game_Switches" },
+            { "memberName": "$gameVariables", "type": "Game_Variables" },
+            { "memberName": "$gameSelfSwitches", "type": "Game_SelfSwitches" },
+            { "memberName": "$gameActors", "type": "Game_Actors" },
+            { "memberName": "$gameParty", "type": "Game_Party" },
+            { "memberName": "$gameTroop", "type": "Game_Troop" },
+            { "memberName": "$gameMap", "type": "Game_Map" },
+            { "memberName": "$gamePlayer", "type": "Game_Player" },
+            { "memberName": "$dataActors", "type": "ActorData[]" },
+            { "memberName": "$dataWeapons", "type": "WeaponData[]" },
+            { "memberName": "$dataItems", "type": "ItemData[]" },
+            { "memberName": "$dataAnimations", "type": "AnimationData[]" },
+            { "memberName": "$dataArmors", "type": "ArmorData[]" },
+            { "memberName": "$dataClasses", "type": "ClassData[]" },
+            { "memberName": "$dataCommonEvents", "type": "CommonEventData[]" },
+            { "memberName": "$dataEnemies", "type": "EnemyData[]" },
+            { "memberName": "$dataSkills", "type": "SkillData[]" },
+            { "memberName": "$dataStates", "type": "StateData[]" },
+            { "memberName": "$dataSystem", "type": "SystemData" },
+            { "memberName": "$dataTroops", "type": "TroopData[]" },
+            { "memberName": "$dataMapInfos", "type": "MapInfoData[]" },
+            { "memberName": "$dataMap", "type": "MapData" },
+            { "memberName": "$dataTilesets", "type": "TilesetData[]" }
+        ]
+    },
+    {
+        "className": "Game_Map",
+        "action": "set-member-type",
+        "batch": [
+            { "memberName": "event", "type": "Game_Event" },
+            { "memberName": "events", "type": "Game_Event[]" }
+        ]
+    }
+]

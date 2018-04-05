@@ -3,7 +3,7 @@
 
 /* The game object class for an enemy. */
 declare class Game_Enemy extends Game_Battler {
-    constructor(enemyId?, x?, y?);
+    constructor(enemyId, x, y);
     battlerHue();
     battlerName();
     dropItemRate();
@@ -232,7 +232,7 @@ declare class Game_Picture {
 
 /* required because save data should not include the database object itself. */
 declare class Game_Item {
-    constructor(item?);
+    constructor(item);
     initialize(item?);
     isArmor();
     isEquipItem();
@@ -249,7 +249,7 @@ declare class Game_Item {
 
 /* The game object class for a battle action. */
 declare class Game_Action {
-    constructor(subject?, forcing?);
+    constructor(subject, forcing);
     static EFFECT_ADD_BUFF: number;
     static EFFECT_ADD_DEBUFF: number;
     static EFFECT_ADD_STATE: number;
@@ -676,7 +676,7 @@ declare class Game_Battler extends Game_BattlerBase {
 
 /* The game object class for an actor. */
 declare class Game_Actor extends Game_Battler {
-    constructor(actorId?);
+    constructor(actorId);
     level;
     actor();
     actorId();
@@ -1027,9 +1027,9 @@ declare class Game_Map {
     encounterList();
     encounterStep();
     eraseEvent(eventId);
-    event(eventId);
+    event(eventId): Game_Event;
     eventIdXy(x, y);
-    events();
+    events(): Game_Event[];
     eventsXy(x, y);
     eventsXyNt(x, y);
     height();
@@ -1110,7 +1110,7 @@ declare class Game_Map {
 
 /* running parallel process events. */
 declare class Game_CommonEvent {
-    constructor(commonEventId?);
+    constructor(commonEventId);
     event();
     initialize(commonEventId?);
     isActive();
@@ -1387,7 +1387,7 @@ declare class Game_Player extends Game_Character {
 
 /* other than the front character, displayed in the party. */
 declare class Game_Follower extends Game_Character {
-    constructor(memberIndex?);
+    constructor(memberIndex);
     actor();
     chaseCharacter(character);
     initialize(memberIndex?);
@@ -1421,7 +1421,7 @@ declare class Game_Followers {
 
 /* The game object class for a vehicle. */
 declare class Game_Vehicle extends Game_Character {
-    constructor(type?);
+    constructor(type);
     canMove();
     getOff();
     getOn();
@@ -1457,7 +1457,7 @@ declare class Game_Vehicle extends Game_Character {
 
 /* switching and running parallel process events. */
 declare class Game_Event extends Game_Character {
-    constructor(mapId?, eventId?);
+    constructor(mapId, eventId);
     checkEventTriggerAuto();
     checkEventTriggerTouch(x, y);
     clearPageSettings();
@@ -1499,7 +1499,7 @@ declare class Game_Event extends Game_Character {
 
 /* The interpreter for running event commands. */
 declare class Game_Interpreter {
-    constructor(depth?);
+    constructor(depth);
     static requestImages(list, commonList);
     changeHp(target, value, allowDeath);
     character(param);

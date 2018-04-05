@@ -1,0 +1,6 @@
+{
+    "rootDir": "v1.5.1",
+    "outDir": "dist",
+    "fixes": "../config/rpgmaker_mv_fixes.json",
+    "files": ["rpg_core.js", "rpg_managers.js", "rpg_objects.js", "rpg_scenes.js", "rpg_sprites.js", "rpg_windows.js"]
+}

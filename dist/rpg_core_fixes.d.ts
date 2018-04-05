@@ -4,18 +4,32 @@ declare interface AudioDefinition {
     pan?: number;
     volume?: number;
 }
-
-// TODO: this isn't right..these are static attributes
-// and can't be handled with module augmentation
-declare interface Window_Base {
-    _iconWidth: number;
-    _iconHeight: number;
-    _faceWidth: number;
-    _faceHeight: number;
+declare const enum ItemType {
+    Regular = 1,
+    Key = 2,
+    HiddenA = 3,
+    HiddenB = 4
+}
+declare const enum MoveType {
+    Fixed = 0,
+    Random = 1,
+    Approach = 2,
+    Custom = 3
+}
+declare interface TilingSprite {
+    /**
+     * The origin point of the tiling sprite for scrolling.
+     *
+     * @property origin
+     * @type Point
+     */
+    origin: Point;
+    _frame: Rectangle;
+    spriteId: number;
 }
 
-declare interface TilingSprite {
-    origin: Point;
+interface Game_Event {
+    _moveType: MoveType;
 }
 
 declare interface Action {
@@ -74,6 +88,7 @@ declare interface Effect {
 
 declare interface Learning {
     level: number;
+    meta: { [index: string]: any };
     note: string;
     skillId: number;
 }
@@ -197,6 +212,7 @@ declare interface ActorData {
     traits: Trait[];
     initialLevel: number;
     maxLevel: number;
+    meta: { [index: string]: any };
     name: string;
     nickname: string;
     note: string;
@@ -222,6 +238,7 @@ declare interface ArmorData {
     etypeId: number;
     traits: Trait[];
     iconIndex: number;
+    meta: { [index: string]: any };
     name: string;
     note: string;
     params: number[];
@@ -233,6 +250,7 @@ declare interface ClassData {
     expParams: number[];
     traits: Trait[];
     learnings: Learning[];
+    meta: { [index: string]: any };
     name: string;
     note: string;
     params: number[][];
@@ -255,6 +273,7 @@ declare interface EnemyData {
     exp: number;
     traits: Trait[];
     gold: number;
+    meta: { [index: string]: any };
     name: string;
     note: string;
     params: number[];
@@ -270,6 +289,7 @@ declare interface ItemData {
     hitType: number;
     iconIndex: number;
     itypeId: number;
+    meta: { [index: string]: any };
     name: string;
     note: string;
     occasion: number;
@@ -293,6 +313,7 @@ interface MapData {
     encounterList: MapDataType.EncounterList[];
     encounterStep: number;
     height: number;
+    meta: { [index: string]: any };
     note: string;
     parallaxLoopX: boolean;
     parallaxLoopY: boolean;
@@ -329,6 +350,7 @@ declare interface SkillData {
     message1: string;
     message2: string;
     mpCost: number;
+    meta: { [index: string]: any };
     name: string;
     note: string;
     occasion: number;
@@ -349,6 +371,7 @@ declare interface StateData {
     chanceByDamage: number;
     iconIndex: number;
     maxTurns: number;
+    meta: { [index: string]: any };
     message1: string;
     message2: string;
     message3: string;
@@ -421,6 +444,7 @@ declare interface SystemData {
 declare interface TilesetData {
     id: number;
     flags: number[];
+    meta: { [index: string]: any };
     mode: number;
     name: string;
     note: string;
@@ -441,6 +465,7 @@ declare interface WeaponData {
     etypeId: number;
     traits: Trait[];
     iconIndex: number;
+    meta: { [index: string]: any };
     name: string;
     note: string;
     params: number[];
@@ -451,6 +476,7 @@ declare interface WeaponData {
 declare namespace MapDataType {
     export interface MapEvent {
         id: number;
+        meta: { [index: string]: any };
         name: string;
         note: string;
         pages: Page[];
