@@ -18,11 +18,11 @@ This is a configuration file located under `/config` and named `<configname>.jso
 
 ### Format
 
-```json
+```JavaScript
 {
     "rootDir": "rmmv_core_files/v1.5.1", // The location of the source files
     "outDir": "dist", // The destination for the d.ts files
-    "fixes": "../config/rpgmaker_mv_fixes.json", // Locatiion of special post-processing rules to apply
+    "fixes": "../config/rpgmaker_mv_fixes.json", // Location of special post-processing rules to apply
     // The list of files to process
     "files": [
         "rpg_core.js",
