@@ -4,7 +4,8 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "test": "mocha -r ts-node/register **/*.test.ts"
+        "test": "mocha -r ts-node/register **/*.test.ts",
+        "build": "tsc -p ."
     },
     "author": "",
     "license": "MIT",
@@ -14,7 +15,8 @@
         "@types/estraverse": "0.0.6",
         "@types/mocha": "^2.2.43",
         "@types/node": "^8.0.28",
-        "esquery": "git+https://github.com/estools/esquery.git"
+        "esquery": "git+https://github.com/estools/esquery.git",
+        "typescript": "^2.8.1"
     },
     "dependencies": {}
 }

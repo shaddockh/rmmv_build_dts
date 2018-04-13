@@ -20,5 +20,14 @@ function loadAndExtract(currentFilename, fixesFilename, outDir) {
             .replace(".js", ".d.ts");
     dtsGenerator.generate(outName);
 }
-const config = require("./config/default_config.json");
-config.files.forEach(f => loadAndExtract(config.rootDir + "/" + f, config.fixes, config.outDir));
+console.log("RMMV Build DTS");
+console.log("Usage: do_extract configfilename");
+const args = process.argv.slice(2);
+const configName = args[0] || null;
+if (!configName) {
+    console.error("A configuration file located under ./config must be provided.");
+}
+else {
+    const config = require("./config/" + configName);
+    config.files.forEach((f) => loadAndExtract(config.rootDir + "/" + f, config.fixes, config.outDir));
+}
