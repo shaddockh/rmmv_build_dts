@@ -3,6 +3,7 @@ import * as fs from "fs";
 import DtsGenerator from "./src/DtsGenerator";
 import { FixHandler } from "./src/Fixes";
 import ScriptAnalyzer from "./src/ScriptAnalyzer";
+import * as path from "path";
 
 interface ConfigFile {
     rootDir: string;
@@ -42,6 +43,6 @@ if (!configName) {
 } else {
     const config = require("./config/" + configName) as ConfigFile;
     config.files.forEach((f) =>
-        loadAndExtract(config.rootDir + "/" + f, config.fixes, config.outDir)
+        loadAndExtract(path.join(config.rootDir, f), config.fixes, config.outDir)
     );
 }

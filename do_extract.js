@@ -4,6 +4,7 @@ const fs = require("fs");
 const DtsGenerator_1 = require("./src/DtsGenerator");
 const Fixes_1 = require("./src/Fixes");
 const ScriptAnalyzer_1 = require("./src/ScriptAnalyzer");
+const path = require("path");
 function loadAndExtract(currentFilename, fixesFilename, outDir) {
     console.log("Processing File: " + currentFilename);
     const source = fs.readFileSync(currentFilename, "utf8");
@@ -29,5 +30,5 @@ if (!configName) {
 }
 else {
     const config = require("./config/" + configName);
-    config.files.forEach((f) => loadAndExtract(config.rootDir + "/" + f, config.fixes, config.outDir));
+    config.files.forEach((f) => loadAndExtract(path.join(config.rootDir, f), config.fixes, config.outDir));
 }

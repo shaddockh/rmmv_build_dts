@@ -15,6 +15,7 @@
         "@types/estraverse": "0.0.6",
         "@types/mocha": "^2.2.43",
         "@types/node": "^8.0.28",
+        "esprima": "^4.0.0",
         "esquery": "git+https://github.com/estools/esquery.git",
         "typescript": "^2.8.1"
     },
